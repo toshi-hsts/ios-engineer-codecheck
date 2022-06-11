@@ -9,13 +9,12 @@
 import UIKit
 
 class RootViewController: UITableViewController {
-    @IBOutlet weak var repositorySearchBar: UISearchBar!
+    @IBOutlet weak private var repositorySearchBar: UISearchBar!
+
+    private var task: URLSessionTask?
 
     var repositories: [[String: Any]] = []
-    var task: URLSessionTask?
-    var searchWord: String!
-    var searchRepositoryURL: String!
-    var indexPathRow: Int!
+    var indexPathRow: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,18 +50,20 @@ extension RootViewController: UISearchBarDelegate {
 
     // 検索ボタンがタップされるたびに呼ばれる
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchWord = searchBar.text else { return }
-        guard searchBar.text?.isEmpty == false else { return }
+        guard searchBar.text?.isEmpty == false,
+              let searchWord = searchBar.text,
+              let searchRepositoryURL = URL(string: "https://api.github.com/search/repositories?q=\(searchWord)")
+        else { return }
 
-        let searchRepositoryURL = "https://api.github.com/search/repositories?q=\(searchWord)"
+        task = URLSession.shared.dataTask(with: searchRepositoryURL) { (data, _, _) in
+            guard let data = data,
+                  let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                  let items = jsonObject["items"] as? [[String: Any]]
+            else { return }
 
-        task = URLSession.shared.dataTask(with: URL(string: searchRepositoryURL)!) { (data, _, _) in
-            let jsonObject = try? JSONSerialization.jsonObject(with: data!) as? [String: Any]
-            if let jsonObject = jsonObject, let items = jsonObject["items"] as? [[String: Any]] {
-                self.repositories = items
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+            self.repositories = items
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
         task?.resume()

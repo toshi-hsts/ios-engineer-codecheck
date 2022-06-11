@@ -12,15 +12,15 @@ class DetailViewController: UIViewController {
 
     var rootViewController: RootViewController!
 
-    @IBOutlet weak var ownerAvatarImageVIew: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var languageLabel: UILabel!
-    @IBOutlet weak var starsLabel: UILabel!
-    @IBOutlet weak var watchersLabel: UILabel!
-    @IBOutlet weak var forksLabel: UILabel!
-    @IBOutlet weak var issuesLabel: UILabel!
+    @IBOutlet weak private var ownerAvatarImageVIew: UIImageView!
+    @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var languageLabel: UILabel!
+    @IBOutlet weak private var starsLabel: UILabel!
+    @IBOutlet weak private var watchersLabel: UILabel!
+    @IBOutlet weak private var forksLabel: UILabel!
+    @IBOutlet weak private var issuesLabel: UILabel!
 
-    var repository: [String: Any] = [:]
+    private var repository: [String: Any] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,8 @@ class DetailViewController: UIViewController {
     }
 
     private func setup() {
-        repository = rootViewController.repositories[rootViewController.indexPathRow]
+        guard let indexPathRow = rootViewController.indexPathRow else { return }
+        repository = rootViewController.repositories[indexPathRow]
 
         languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
         starsLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
@@ -40,15 +41,19 @@ class DetailViewController: UIViewController {
     }
 
     /// アバター画像を取得する
-    func getImage() {
-        guard let owner = repository["owner"] as? [String: Any], let avatarURL = owner["avatar_url"] as? String else {
-            return
-        }
+    private func getImage() {
+        guard let owner = repository["owner"] as? [String: Any],
+              let avatarURL = owner["avatar_url"] as? String,
+              let avatarURL = URL(string: avatarURL)
+        else { return }
 
         titleLabel.text = repository["full_name"] as? String
 
-        let task =  URLSession.shared.dataTask(with: URL(string: avatarURL)!) { (data, _, _) in
-            let avatarImage = UIImage(data: data!)!
+        let task =  URLSession.shared.dataTask(with: avatarURL) { (data, _, _) in
+            guard let data = data,
+                  let avatarImage = UIImage(data: data)
+            else { return }
+
             DispatchQueue.main.async {
                 self.ownerAvatarImageVIew.image = avatarImage
             }
