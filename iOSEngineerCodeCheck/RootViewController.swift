@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootViewController: UITableViewController, UISearchBarDelegate {
+class RootViewController: UITableViewController {
     @IBOutlet weak var repositorySearchBar: UISearchBar!
 
     var repositories: [[String: Any]] = []
@@ -19,21 +19,34 @@ class RootViewController: UITableViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         repositorySearchBar.text = "GitHubのリポジトリを検索できるよー"
         repositorySearchBar.delegate = self
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail"{
+            if let detailViewController = segue.destination as? DetailViewController {
+                detailViewController.rootViewController = self
+            }
+        }
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension RootViewController: UISearchBarDelegate {
+    // フォーカスが当たるたびに呼ばれる
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // ↓こうすれば初期のテキストを消せる
         searchBar.text = ""
         return true
     }
 
+    // 検索文字が変更されるたびに呼ばれる
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         task?.cancel()
     }
 
+    // 検索ボタンがタップされるたびに呼ばれる
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchWord = searchBar.text else { return }
         guard searchBar.text?.isEmpty == false else { return }
@@ -49,22 +62,18 @@ class RootViewController: UITableViewController, UISearchBarDelegate {
                 }
             }
         }
-        // これ呼ばなきゃリストが更新されません
         task?.resume()
     }
+}
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetail"{
-            if let detailViewController = segue.destination as? DetailViewController {
-                detailViewController.rootViewController = self
-            }
-        }
-    }
-
+// MARK: - UITableViewDataSource
+extension RootViewController {
+    // テーブルの1セクションあたりのセル数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repositories.count
     }
 
+    // セル設定
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let repository = repositories[indexPath.row]
@@ -75,9 +84,12 @@ class RootViewController: UITableViewController, UISearchBarDelegate {
 
         return cell
     }
+}
 
+// MARK: - UITableViewDelegate
+extension RootViewController {
+    // セルタップ時に呼ばれる
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 画面遷移時に呼ばれる
         indexPathRow = indexPath.row
         performSegue(withIdentifier: "toDetail", sender: self)
     }

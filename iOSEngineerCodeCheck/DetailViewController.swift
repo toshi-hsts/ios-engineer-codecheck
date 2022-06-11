@@ -36,6 +36,7 @@ class DetailViewController: UIViewController {
         getImage()
     }
 
+    /// アバター画像を取得する
     func getImage() {
         guard let owner = repository["owner"] as? [String: Any], let avatarURL = owner["avatar_url"] as? String else {
             return
