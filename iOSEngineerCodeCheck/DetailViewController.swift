@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
     }
 
     private func setup() {
-        guard let indexPathRow = rootViewController?.indexPathRow else { return }
+        guard let indexPathRow = rootViewController.indexPathRow else { return }
         repository = rootViewController.repositories[indexPathRow]
 
         languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
@@ -50,8 +50,9 @@ class DetailViewController: UIViewController {
         titleLabel.text = repository["full_name"] as? String
 
         let task =  URLSession.shared.dataTask(with: avatarURL) { (data, _, _) in
-            guard let data = data else { return }
-            guard let avatarImage = UIImage(data: data) else { return }
+            guard let data = data,
+                  let avatarImage = UIImage(data: data)
+            else { return }
 
             DispatchQueue.main.async {
                 self.ownerAvatarImageVIew.image = avatarImage

@@ -50,20 +50,20 @@ extension RootViewController: UISearchBarDelegate {
 
     // 検索ボタンがタップされるたびに呼ばれる
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchWord = searchBar.text else { return }
-        guard searchBar.text?.isEmpty == false else { return }
-        guard let searchRepositoryURL =
-                URL(string: "https://api.github.com/search/repositories?q=\(searchWord)") else { return }
+        guard searchBar.text?.isEmpty == false,
+              let searchWord = searchBar.text,
+              let searchRepositoryURL = URL(string: "https://api.github.com/search/repositories?q=\(searchWord)")
+        else { return }
 
         task = URLSession.shared.dataTask(with: searchRepositoryURL) { (data, _, _) in
-            guard let data = data else { return }
+            guard let data = data,
+                  let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                  let items = jsonObject["items"] as? [[String: Any]]
+            else { return }
 
-            let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
-            if let jsonObject = jsonObject, let items = jsonObject["items"] as? [[String: Any]] {
-                self.repositories = items
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+            self.repositories = items
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
         task?.resume()
