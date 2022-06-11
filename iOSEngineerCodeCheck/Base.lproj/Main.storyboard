@@ -55,7 +55,7 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="ktq-eC-ZBq"/>
                     <connections>
                         <outlet property="repositorySearchBar" destination="6rq-CD-Hob" id="ZBC-mP-Y3P"/>
-                        <segue destination="AHY-RL-7mG" kind="show" identifier="Detail" id="qqd-8W-4W1"/>
+                        <segue destination="AHY-RL-7mG" kind="show" identifier="toDetail" id="qqd-8W-4W1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xer-fe-JeW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
