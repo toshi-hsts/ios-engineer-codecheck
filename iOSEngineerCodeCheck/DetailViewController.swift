@@ -42,14 +42,17 @@ class DetailViewController: UIViewController {
 
     /// アバター画像を取得する
     private func getImage() {
-        guard let owner = repository["owner"] as? [String: Any], let avatarURL = owner["avatar_url"] as? String else {
-            return
-        }
+        guard let owner = repository["owner"] as? [String: Any],
+              let avatarURL = owner["avatar_url"] as? String,
+              let avatarURL = URL(string: avatarURL)
+        else { return }
 
         titleLabel.text = repository["full_name"] as? String
 
-        let task =  URLSession.shared.dataTask(with: URL(string: avatarURL)!) { (data, _, _) in
-            let avatarImage = UIImage(data: data!)!
+        let task =  URLSession.shared.dataTask(with: avatarURL) { (data, _, _) in
+            guard let data = data else { return }
+            guard let avatarImage = UIImage(data: data) else { return }
+
             DispatchQueue.main.async {
                 self.ownerAvatarImageVIew.image = avatarImage
             }
