@@ -12,15 +12,15 @@ class DetailViewController: UIViewController {
 
     var rootViewController: RootViewController!
 
-    @IBOutlet weak var ownerAvatarImageVIew: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var languageLabel: UILabel!
-    @IBOutlet weak var starsLabel: UILabel!
-    @IBOutlet weak var watchersLabel: UILabel!
-    @IBOutlet weak var forksLabel: UILabel!
-    @IBOutlet weak var issuesLabel: UILabel!
+    @IBOutlet weak private var ownerAvatarImageVIew: UIImageView!
+    @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var languageLabel: UILabel!
+    @IBOutlet weak private var starsLabel: UILabel!
+    @IBOutlet weak private var watchersLabel: UILabel!
+    @IBOutlet weak private var forksLabel: UILabel!
+    @IBOutlet weak private var issuesLabel: UILabel!
 
-    var repository: [String: Any] = [:]
+    private var repository: [String: Any] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
     }
 
     /// アバター画像を取得する
-    func getImage() {
+    private func getImage() {
         guard let owner = repository["owner"] as? [String: Any], let avatarURL = owner["avatar_url"] as? String else {
             return
         }
