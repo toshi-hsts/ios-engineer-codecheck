@@ -24,7 +24,10 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
 
+    private func setup() {
         repository = rootViewController.repositories[rootViewController.indexPathRow]
 
         languageLabel.text = "Written in \(repository["language"] as? String ?? "")"

@@ -19,9 +19,7 @@ class RootViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        repositorySearchBar.text = "GitHubのリポジトリを検索できるよー"
-        repositorySearchBar.delegate = self
+        setup()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,6 +28,11 @@ class RootViewController: UITableViewController {
                 detailViewController.rootViewController = self
             }
         }
+    }
+
+    private func setup() {
+        repositorySearchBar.text = "GitHubのリポジトリを検索できるよー"
+        repositorySearchBar.delegate = self
     }
 }
 
