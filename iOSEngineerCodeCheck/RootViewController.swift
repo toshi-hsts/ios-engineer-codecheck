@@ -12,11 +12,9 @@ class RootViewController: UITableViewController {
     @IBOutlet weak private var repositorySearchBar: UISearchBar!
 
     private var task: URLSessionTask?
-    private var searchWord: String!
-    private var searchRepositoryURL: String!
 
     var repositories: [[String: Any]] = []
-    var indexPathRow: Int!
+    var indexPathRow: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -28,7 +28,8 @@ class DetailViewController: UIViewController {
     }
 
     private func setup() {
-        repository = rootViewController.repositories[rootViewController.indexPathRow]
+        guard let indexPathRow = rootViewController?.indexPathRow else { return }
+        repository = rootViewController.repositories[indexPathRow]
 
         languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
         starsLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
