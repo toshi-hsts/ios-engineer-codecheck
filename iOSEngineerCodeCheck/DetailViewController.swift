@@ -32,25 +32,16 @@ class DetailViewController: UIViewController {
         issuesLabel.text = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
         titleLabel.text = repository["full_name"] as? String ?? ""
 
-        getImage()
+        setOwnerAvatarImage()
     }
 
-    /// アバター画像を取得する
-    private func getImage() {
+    /// アバター画像をセットする
+    private func setOwnerAvatarImage() {
         guard let owner = repository["owner"] as? [String: Any],
               let avatarURL = owner["avatar_url"] as? String,
               let avatarURL = URL(string: avatarURL)
         else { return }
 
-        let task =  URLSession.shared.dataTask(with: avatarURL) { (data, _, _) in
-            guard let data = data,
-                  let avatarImage = UIImage(data: data)
-            else { return }
-
-            DispatchQueue.main.async {
-                self.ownerAvatarImageView.image = avatarImage
-            }
-        }
-        task.resume()
+        ownerAvatarImageView.setImage(with: avatarURL)
     }
 }
