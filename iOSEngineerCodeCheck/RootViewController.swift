@@ -11,7 +11,7 @@ import UIKit
 class RootViewController: UITableViewController {
     @IBOutlet weak private var repositorySearchBar: UISearchBar!
 
-    private var task: URLSessionTask?
+    private let gitHubAPIClient = GitHubAPIClient()
     var repositories: [[String: Any]] = []
 
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ extension RootViewController: UISearchBarDelegate {
 
     // 検索文字が変更されるたびに呼ばれる
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        task?.cancel()
+        gitHubAPIClient.cancelTask()
     }
 
     // 検索ボタンがタップされるたびに呼ばれる
@@ -54,18 +54,14 @@ extension RootViewController: UISearchBarDelegate {
               let searchRepositoryURL = URL(string: "https://api.github.com/search/repositories?q=\(searchWord)")
         else { return }
 
-        task = URLSession.shared.dataTask(with: searchRepositoryURL) { (data, _, _) in
-            guard let data = data,
-                  let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-                  let items = jsonObject["items"] as? [[String: Any]]
-            else { return }
-
-            self.repositories = items
+        gitHubAPIClient.fetchRepositories(with: searchRepositoryURL) { [weak self] items in
+            self?.repositories = items
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
+        } failureHandler: {
+            // error handling
         }
-        task?.resume()
     }
 }
 
