@@ -9,10 +9,9 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    var repository: [String: Any] = [:]
 
-    var rootViewController: RootViewController!
-
-    @IBOutlet weak private var ownerAvatarImageVIew: UIImageView!
+    @IBOutlet weak private var ownerAvatarImageView: UIImageView!
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var languageLabel: UILabel!
     @IBOutlet weak private var starsLabel: UILabel!
@@ -20,22 +19,18 @@ class DetailViewController: UIViewController {
     @IBOutlet weak private var forksLabel: UILabel!
     @IBOutlet weak private var issuesLabel: UILabel!
 
-    private var repository: [String: Any] = [:]
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
 
     private func setup() {
-        guard let indexPathRow = rootViewController.indexPathRow else { return }
-        repository = rootViewController.repositories[indexPathRow]
-
         languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
         starsLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
-        watchersLabel.text = "\(repository["wachers_count"] as? Int ?? 0) watchers"
+        watchersLabel.text = "\(repository["watchers_count"] as? Int ?? 0) watchers"
         forksLabel.text = "\(repository["forks_count"] as? Int ?? 0) forks"
         issuesLabel.text = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
+        titleLabel.text = repository["full_name"] as? String ?? ""
 
         getImage()
     }
@@ -47,15 +42,13 @@ class DetailViewController: UIViewController {
               let avatarURL = URL(string: avatarURL)
         else { return }
 
-        titleLabel.text = repository["full_name"] as? String
-
         let task =  URLSession.shared.dataTask(with: avatarURL) { (data, _, _) in
             guard let data = data,
                   let avatarImage = UIImage(data: data)
             else { return }
 
             DispatchQueue.main.async {
-                self.ownerAvatarImageVIew.image = avatarImage
+                self.ownerAvatarImageView.image = avatarImage
             }
         }
         task.resume()
