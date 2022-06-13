@@ -30,6 +30,7 @@ class DetailViewController: UIViewController {
         watchersLabel.text = "\(repository["watchers_count"] as? Int ?? 0) watchers"
         forksLabel.text = "\(repository["forks_count"] as? Int ?? 0) forks"
         issuesLabel.text = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
+        titleLabel.text = repository["full_name"] as? String ?? ""
 
         getImage()
     }
@@ -40,8 +41,6 @@ class DetailViewController: UIViewController {
               let avatarURL = owner["avatar_url"] as? String,
               let avatarURL = URL(string: avatarURL)
         else { return }
-
-        titleLabel.text = repository["full_name"] as? String
 
         let task =  URLSession.shared.dataTask(with: avatarURL) { (data, _, _) in
             guard let data = data,
