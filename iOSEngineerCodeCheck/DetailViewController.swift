@@ -9,8 +9,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
-    var rootViewController: RootViewController!
+    var repository: [String: Any] = [:]
 
     @IBOutlet weak private var ownerAvatarImageView: UIImageView!
     @IBOutlet weak private var titleLabel: UILabel!
@@ -20,17 +19,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak private var forksLabel: UILabel!
     @IBOutlet weak private var issuesLabel: UILabel!
 
-    private var repository: [String: Any] = [:]
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
 
     private func setup() {
-        guard let indexPathRow = rootViewController.indexPathRow else { return }
-        repository = rootViewController.repositories[indexPathRow]
-
         languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
         starsLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
         watchersLabel.text = "\(repository["watchers_count"] as? Int ?? 0) watchers"

@@ -12,9 +12,7 @@ class RootViewController: UITableViewController {
     @IBOutlet weak private var repositorySearchBar: UISearchBar!
 
     private var task: URLSessionTask?
-
     var repositories: [[String: Any]] = []
-    var indexPathRow: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +21,9 @@ class RootViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetail"{
-            if let detailViewController = segue.destination as? DetailViewController {
-                detailViewController.rootViewController = self
+            if let detailViewController = segue.destination as? DetailViewController,
+               let repositorySelected = sender as? [String: Any] {
+                detailViewController.repository = repositorySelected
             }
         }
     }
@@ -94,7 +93,7 @@ extension RootViewController {
 extension RootViewController {
     // セルタップ時に呼ばれる
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        indexPathRow = indexPath.row
-        performSegue(withIdentifier: "toDetail", sender: self)
+        let repositorySelected = repositories[indexPath.row]
+        performSegue(withIdentifier: "toDetail", sender: repositorySelected)
     }
 }
