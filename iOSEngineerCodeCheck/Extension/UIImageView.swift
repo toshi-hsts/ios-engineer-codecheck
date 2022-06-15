@@ -10,20 +10,21 @@ import Foundation
 import UIKit
 
 extension UIImageView {
-    /// URLから画像をセットする
-    /// - Parameters:
-    ///   - url: 画像URL
-    /// - Returns: なし
-    func setImage(with url: URL) {
-        let task = URLSession.shared.dataTask(with: url) { (data, _, _) in
-            guard let data = data,
-                  let image = UIImage(data: data)
-            else { return }
-
-            DispatchQueue.main.async {
-                self.image = image
-            }
-        }
-        task.resume()
-    }
+//    同機能はSDWebImageを用いて実装する(方針変更に備えコメントアウトしておく)
+//    /// URLから画像をセットする
+//    /// - Parameters:
+//    ///   - url: 画像URL
+//    /// - Returns: なし
+//    func setImage(with url: URL) {
+//        let task = URLSession.shared.dataTask(with: url) { (data, _, _) in
+//            guard let data = data,
+//                  let image = UIImage(data: data)
+//            else { return }
+//
+//            DispatchQueue.main.async {
+//                self.image = image
+//            }
+//        }
+//        task.resume()
+//    }
 }

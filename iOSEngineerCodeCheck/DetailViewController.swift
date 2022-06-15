@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class DetailViewController: UIViewController {
     var repository: [String: Any] = [:]
@@ -42,6 +43,6 @@ class DetailViewController: UIViewController {
               let avatarURL = URL(string: avatarURL)
         else { return }
 
-        ownerAvatarImageView.setImage(with: avatarURL)
+        ownerAvatarImageView.sd_setImage(with: avatarURL)
     }
 }
