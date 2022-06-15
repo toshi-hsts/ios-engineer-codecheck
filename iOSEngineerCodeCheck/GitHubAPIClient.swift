@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import Alamofire
 
 class GitHubAPIClient {
 
-    private var task: URLSessionTask?
+    private var request: Alamofire.Request?
 
     /// リポジトリを取得する
     /// - Parameters:
@@ -20,23 +21,34 @@ class GitHubAPIClient {
     /// - Returns: なし
     func fetchRepositories(with searchRepositoryURL: URL,
                            successHandler: @escaping (_ items: [[String: Any]]) -> Void,
-                           failureHandler: @escaping () -> Void) {
+                           failureHandler: @escaping (_ errorDescription: String) -> Void) {
 
-        task = URLSession.shared.dataTask(with: searchRepositoryURL) { (data, _, _) in
-            guard let data = data,
-                  let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-                  let items = jsonObject["items"] as? [[String: Any]]
-            else {
-                failureHandler()
-                return
+        request = AF.request(searchRepositoryURL, method: .get).response { response in
+            switch response.result {
+            case .success(let data):
+                guard let data = data else {
+                    failureHandler("response data is nil.")
+                    return
+                }
+
+                do {
+                    let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                    if let jsonObject = jsonObject,
+                       let items = jsonObject["items"] as? [[String: Any]] {
+                        successHandler(items)
+                    }
+                } catch let error {
+                    failureHandler(error.localizedDescription)
+                }
+            case .failure(let error):
+                failureHandler(error.localizedDescription)
             }
-            successHandler(items)
         }
-        task?.resume()
+        request?.resume()
     }
 
     ///  タスクを止める
     func cancelTask() {
-        task?.cancel()
+        request?.cancel()
     }
 }

@@ -59,8 +59,8 @@ extension RootViewController: UISearchBarDelegate {
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
-        } failureHandler: {
-            // error handling
+        } failureHandler: { errorDescription in
+            print("errro:", errorDescription)
         }
     }
 }
