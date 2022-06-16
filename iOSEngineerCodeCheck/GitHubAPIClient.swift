@@ -20,7 +20,7 @@ class GitHubAPIClient {
     ///   - failureHandler: リポジトリ取得が失敗した場合の処理
     /// - Returns: なし
     func fetchRepositories(with searchRepositoryURL: URL,
-                           successHandler: @escaping (_ items: [[String: Any]]) -> Void,
+                           successHandler: @escaping (_ items: [Repository]) -> Void,
                            failureHandler: @escaping (_ errorDescription: String) -> Void) {
 
         request = AF.request(searchRepositoryURL, method: .get).response { response in
@@ -32,11 +32,8 @@ class GitHubAPIClient {
                 }
 
                 do {
-                    let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                    if let jsonObject = jsonObject,
-                       let items = jsonObject["items"] as? [[String: Any]] {
-                        successHandler(items)
-                    }
+                    let searchResult  = try JSONDecoder().decode(SearchResult.self, from: data)
+                    successHandler(searchResult.items)
                 } catch let error {
                     failureHandler(error.localizedDescription)
                 }
