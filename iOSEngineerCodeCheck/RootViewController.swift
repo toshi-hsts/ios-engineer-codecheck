@@ -12,7 +12,7 @@ class RootViewController: UITableViewController {
     @IBOutlet weak private var repositorySearchBar: UISearchBar!
 
     private let gitHubAPIClient = GitHubAPIClient()
-    var repositories: [[String: Any]] = []
+    var repositories: [Repository] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class RootViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetail"{
             if let detailViewController = segue.destination as? DetailViewController,
-               let repositorySelected = sender as? [String: Any] {
+               let repositorySelected = sender as? Repository {
                 detailViewController.repository = repositorySelected
             }
         }
@@ -77,8 +77,8 @@ extension RootViewController {
         let cell = UITableViewCell()
         let repository = repositories[indexPath.row]
 
-        cell.textLabel?.text = repository["full_name"] as? String ?? ""
-        cell.detailTextLabel?.text = repository["language"] as? String ?? ""
+        cell.textLabel?.text = repository.fullName
+        cell.detailTextLabel?.text = repository.language
         cell.tag = indexPath.row
 
         return cell

@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 class DetailViewController: UIViewController {
-    var repository: [String: Any] = [:]
+    var repository: Repository!
 
     @IBOutlet weak private var ownerAvatarImageView: UIImageView!
     @IBOutlet weak private var titleLabel: UILabel!
@@ -26,22 +26,19 @@ class DetailViewController: UIViewController {
     }
 
     private func setup() {
-        languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
-        starsLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
-        watchersLabel.text = "\(repository["watchers_count"] as? Int ?? 0) watchers"
-        forksLabel.text = "\(repository["forks_count"] as? Int ?? 0) forks"
-        issuesLabel.text = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
-        titleLabel.text = repository["full_name"] as? String ?? ""
+        titleLabel.text = repository.fullName
+        languageLabel.text = "Written in \(repository.language)"
+        starsLabel.text = "\(repository.stargazersCount) stars"
+        watchersLabel.text = "\(repository.watchersCount) watchers"
+        forksLabel.text = "\(repository.forksCount) forks"
+        issuesLabel.text = "\(repository.openIssuesCount) open issues"
 
         setOwnerAvatarImage()
     }
 
     /// アバター画像をセットする
     private func setOwnerAvatarImage() {
-        guard let owner = repository["owner"] as? [String: Any],
-              let avatarURL = owner["avatar_url"] as? String,
-              let avatarURL = URL(string: avatarURL)
-        else { return }
+        guard let avatarURL = URL(string: repository.owner.avatarURL) else { return }
 
         ownerAvatarImageView.sd_setImage(with: avatarURL)
     }
