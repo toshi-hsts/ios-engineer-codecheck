@@ -11,8 +11,7 @@ import UIKit
 class RootViewController: UITableViewController {
     @IBOutlet weak private var repositorySearchBar: UISearchBar!
 
-    private let gitHubAPIClient = GitHubAPIClient()
-    var repositories: [Repository] = []
+    private var presenter: RootInputCollection!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +31,10 @@ class RootViewController: UITableViewController {
         repositorySearchBar.text = "GitHubのリポジトリを検索できるよー"
         repositorySearchBar.delegate = self
     }
+
+    func inject(_ presenter: RootInputCollection) {
+        self.presenter = presenter
+    }
 }
 
 // MARK: - UISearchBarDelegate
@@ -44,7 +47,7 @@ extension RootViewController: UISearchBarDelegate {
 
     // 検索文字が変更されるたびに呼ばれる
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        gitHubAPIClient.cancelTask()
+        presenter.changedSearchText()
     }
 
     // 検索ボタンがタップされるたびに呼ばれる
@@ -54,14 +57,7 @@ extension RootViewController: UISearchBarDelegate {
               let searchRepositoryURL = URL(string: "https://api.github.com/search/repositories?q=\(searchWord)")
         else { return }
 
-        gitHubAPIClient.fetchRepositories(with: searchRepositoryURL) { [weak self] items in
-            self?.repositories = items
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
-        } failureHandler: { errorDescription in
-            print("errro:", errorDescription)
-        }
+        presenter.tapSearchButton(with: searchRepositoryURL)
     }
 }
 
@@ -69,13 +65,13 @@ extension RootViewController: UISearchBarDelegate {
 extension RootViewController {
     // テーブルの1セクションあたりのセル数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositories.count
+        return presenter.repositories.count
     }
 
     // セル設定
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let repository = repositories[indexPath.row]
+        let repository = presenter.repositories[indexPath.row]
 
         cell.textLabel?.text = repository.fullName
         cell.detailTextLabel?.text = repository.language
@@ -89,7 +85,18 @@ extension RootViewController {
 extension RootViewController {
     // セルタップ時に呼ばれる
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let repositorySelected = repositories[indexPath.row]
-        performSegue(withIdentifier: "toDetail", sender: repositorySelected)
+        presenter.tapTableViewCell(at: indexPath.row)
+    }
+}
+
+// MARK: - RootPresenterOutputCollection
+extension RootViewController: RootOutputCollection {
+    /// 詳細画面に移動する
+    func moveToDeail(with repository: Repository) {
+        performSegue(withIdentifier: "toDetail", sender: repository)
+    }
+    ///  テーブルビューを更新する
+    func reloadTableView() {
+        tableView.reloadData()
     }
 }

@@ -20,6 +20,9 @@ final class Router {
             .instantiateViewController(withIdentifier: "rootVC") as? RootViewController else { return }
 
         let rootNC = UINavigationController(rootViewController: rootVC)
+        let rootPresenter = RootPresenter(view: rootVC)
+
+        rootVC.inject(rootPresenter)
         showHandler(rootNC)
     }
 }
