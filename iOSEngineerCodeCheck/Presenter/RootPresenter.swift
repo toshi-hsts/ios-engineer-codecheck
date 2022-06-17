@@ -11,10 +11,11 @@ import Foundation
 final class RootPresenter {
     private weak var view: RootOutputCollection!
     private(set) var repositories: [Repository] = []
-    private let gitHubAPIClient = GitHubAPIClient()
+    private let gitHubAPIClient: GitHubAPIClientCollection!
 
-    init(view: RootOutputCollection) {
+    init(view: RootOutputCollection, apiClient: GitHubAPIClientCollection) {
         self.view = view
+        self.gitHubAPIClient = apiClient
     }
 }
 
