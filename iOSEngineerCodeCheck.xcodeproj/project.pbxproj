@@ -23,6 +23,13 @@
 		CA16B55C285A1448006421C5 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA16B55B285A1448006421C5 /* Owner.swift */; };
 		CA5F3FEE28571AA20095E92F /* GitHubAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F3FED28571AA20095E92F /* GitHubAPIClient.swift */; };
 		CA5F3FF328571CC40095E92F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F3FF228571CC40095E92F /* UIImageView.swift */; };
+		CA7BDA6B285CB01700BE3A7A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA6A285CB01700BE3A7A /* Router.swift */; };
+		CA7BDA6E285CB1CA00BE3A7A /* RootPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA6D285CB1CA00BE3A7A /* RootPresenter.swift */; };
+		CA7BDA72285CB27200BE3A7A /* RootInputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA71285CB27200BE3A7A /* RootInputCollection.swift */; };
+		CA7BDA74285CB29C00BE3A7A /* RootOutputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA73285CB29C00BE3A7A /* RootOutputCollection.swift */; };
+		CA7BDA77285CD51A00BE3A7A /* DetailInputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA76285CD51A00BE3A7A /* DetailInputCollection.swift */; };
+		CA7BDA79285CD54500BE3A7A /* DetailOutputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA78285CD54500BE3A7A /* DetailOutputCollection.swift */; };
+		CA7BDA7B285CD56F00BE3A7A /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA7A285CD56F00BE3A7A /* DetailPresenter.swift */; };
 		CA85E6CC285B34B700BCB89C /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA85E6CE285B34B700BCB89C /* Detail.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +71,13 @@
 		CA16B55B285A1448006421C5 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		CA5F3FED28571AA20095E92F /* GitHubAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIClient.swift; sourceTree = "<group>"; };
 		CA5F3FF228571CC40095E92F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		CA7BDA6A285CB01700BE3A7A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		CA7BDA6D285CB1CA00BE3A7A /* RootPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresenter.swift; sourceTree = "<group>"; };
+		CA7BDA71285CB27200BE3A7A /* RootInputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInputCollection.swift; sourceTree = "<group>"; };
+		CA7BDA73285CB29C00BE3A7A /* RootOutputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootOutputCollection.swift; sourceTree = "<group>"; };
+		CA7BDA76285CD51A00BE3A7A /* DetailInputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInputCollection.swift; sourceTree = "<group>"; };
+		CA7BDA78285CD54500BE3A7A /* DetailOutputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOutputCollection.swift; sourceTree = "<group>"; };
+		CA7BDA7A285CD56F00BE3A7A /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		CA85E6CD285B34B700BCB89C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Detail.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,9 +131,12 @@
 		BFD945DD244DC5E80012785A /* iOSEngineerCodeCheck */ = {
 			isa = PBXGroup;
 			children = (
+				CA7BDA6F285CB21000BE3A7A /* Protocol */,
 				CA5F3FEF28571CA10095E92F /* Extension */,
 				CA16B556285A13FF006421C5 /* Codable */,
+				CA7BDA69285CAFD000BE3A7A /* Router */,
 				CA85E6C4285B33A400BCB89C /* Screen */,
+				CA7BDA6C285CB1B800BE3A7A /* Presenter */,
 				CA85E6C9285B344400BCB89C /* Asset */,
 				CA85E6C8285B33FE00BCB89C /* API */,
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
@@ -163,6 +180,50 @@
 				CA5F3FF228571CC40095E92F /* UIImageView.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		CA7BDA69285CAFD000BE3A7A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CA7BDA6A285CB01700BE3A7A /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CA7BDA6C285CB1B800BE3A7A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CA7BDA6D285CB1CA00BE3A7A /* RootPresenter.swift */,
+				CA7BDA7A285CD56F00BE3A7A /* DetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CA7BDA6F285CB21000BE3A7A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CA7BDA70285CB21D00BE3A7A /* Root */,
+				CA7BDA75285CD4F800BE3A7A /* Detail */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CA7BDA70285CB21D00BE3A7A /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				CA7BDA71285CB27200BE3A7A /* RootInputCollection.swift */,
+				CA7BDA73285CB29C00BE3A7A /* RootOutputCollection.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		CA7BDA75285CD4F800BE3A7A /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CA7BDA76285CD51A00BE3A7A /* DetailInputCollection.swift */,
+				CA7BDA78285CD54500BE3A7A /* DetailOutputCollection.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		CA85E6C4285B33A400BCB89C /* Screen */ = {
@@ -378,11 +439,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7BDA72285CB27200BE3A7A /* RootInputCollection.swift in Sources */,
+				CA7BDA79285CD54500BE3A7A /* DetailOutputCollection.swift in Sources */,
+				CA7BDA74285CB29C00BE3A7A /* RootOutputCollection.swift in Sources */,
 				CA5F3FEE28571AA20095E92F /* GitHubAPIClient.swift in Sources */,
+				CA7BDA77285CD51A00BE3A7A /* DetailInputCollection.swift in Sources */,
 				CA16B558285A141A006421C5 /* SearchResult.swift in Sources */,
+				CA7BDA6B285CB01700BE3A7A /* Router.swift in Sources */,
 				BFD945E3244DC5E80012785A /* RootViewController.swift in Sources */,
 				CA16B55A285A1430006421C5 /* Repository.swift in Sources */,
 				CA16B55C285A1448006421C5 /* Owner.swift in Sources */,
+				CA7BDA6E285CB1CA00BE3A7A /* RootPresenter.swift in Sources */,
+				CA7BDA7B285CD56F00BE3A7A /* DetailPresenter.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* DetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				CA5F3FF328571CC40095E92F /* UIImageView.swift in Sources */,
