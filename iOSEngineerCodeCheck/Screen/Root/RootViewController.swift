@@ -18,15 +18,6 @@ class RootViewController: UITableViewController {
         setup()
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetail"{
-            if let detailViewController = segue.destination as? DetailViewController,
-               let repositorySelected = sender as? Repository {
-                detailViewController.repository = repositorySelected
-            }
-        }
-    }
-
     private func setup() {
         repositorySearchBar.text = "GitHubのリポジトリを検索できるよー"
         repositorySearchBar.delegate = self
@@ -92,7 +83,9 @@ extension RootViewController {
 extension RootViewController: RootOutputCollection {
     /// 詳細画面に移動する
     func moveToDeail(with repository: Repository) {
-        performSegue(withIdentifier: "toDetail", sender: repository)
+        Router.shared.showDetail(with: repository) { detailVC in
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
     ///  テーブルビューを更新する
     func reloadTableView() {

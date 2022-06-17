@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 class DetailViewController: UIViewController {
-    var repository: Repository!
+    private var presenter: DetailInputCollection!
 
     @IBOutlet weak private var ownerAvatarImageView: UIImageView!
     @IBOutlet weak private var titleLabel: UILabel!
@@ -26,6 +26,8 @@ class DetailViewController: UIViewController {
     }
 
     private func setup() {
+        let repository = presenter.repository
+
         titleLabel.text = repository.fullName
         languageLabel.text = "Written in \(repository.language)"
         starsLabel.text = "\(repository.stargazersCount) stars"
@@ -38,8 +40,17 @@ class DetailViewController: UIViewController {
 
     /// アバター画像をセットする
     private func setOwnerAvatarImage() {
-        guard let avatarURL = URL(string: repository.owner.avatarURL) else { return }
+        guard let avatarURL = URL(string: presenter.repository.owner.avatarURL)
+        else { return }
 
         ownerAvatarImageView.sd_setImage(with: avatarURL)
     }
+
+    func inject(presenter: DetailInputCollection) {
+        self.presenter = presenter
+    }
+}
+
+// MARK: - DetailPresenterOutputCollection
+extension DetailViewController: DetailOutputCollection {
 }
