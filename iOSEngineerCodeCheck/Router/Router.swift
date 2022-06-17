@@ -20,7 +20,8 @@ final class Router {
             .instantiateViewController(withIdentifier: "rootVC") as? RootViewController else { return }
 
         let rootNC = UINavigationController(rootViewController: rootVC)
-        let rootPresenter = RootPresenter(view: rootVC)
+        let githubAPIClient = GitHubAPIClient()
+        let rootPresenter = RootPresenter(view: rootVC, apiClient: githubAPIClient)
 
         rootVC.inject(rootPresenter)
         showHandler(rootNC)
