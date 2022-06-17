@@ -22,7 +22,6 @@
 		CA16B55A285A1430006421C5 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA16B559285A1430006421C5 /* Repository.swift */; };
 		CA16B55C285A1448006421C5 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA16B55B285A1448006421C5 /* Owner.swift */; };
 		CA5F3FEE28571AA20095E92F /* GitHubAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F3FED28571AA20095E92F /* GitHubAPIClient.swift */; };
-		CA5F3FF328571CC40095E92F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F3FF228571CC40095E92F /* UIImageView.swift */; };
 		CA7BDA6B285CB01700BE3A7A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA6A285CB01700BE3A7A /* Router.swift */; };
 		CA7BDA6E285CB1CA00BE3A7A /* RootPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA6D285CB1CA00BE3A7A /* RootPresenter.swift */; };
 		CA7BDA72285CB27200BE3A7A /* RootInputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA71285CB27200BE3A7A /* RootInputCollection.swift */; };
@@ -71,7 +70,6 @@
 		CA16B559285A1430006421C5 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		CA16B55B285A1448006421C5 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		CA5F3FED28571AA20095E92F /* GitHubAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIClient.swift; sourceTree = "<group>"; };
-		CA5F3FF228571CC40095E92F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		CA7BDA6A285CB01700BE3A7A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CA7BDA6D285CB1CA00BE3A7A /* RootPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresenter.swift; sourceTree = "<group>"; };
 		CA7BDA71285CB27200BE3A7A /* RootInputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInputCollection.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				CA7BDA6F285CB21000BE3A7A /* Protocol */,
-				CA5F3FEF28571CA10095E92F /* Extension */,
 				CA16B556285A13FF006421C5 /* Codable */,
 				CA7BDA69285CAFD000BE3A7A /* Router */,
 				CA85E6C4285B33A400BCB89C /* Screen */,
@@ -174,14 +171,6 @@
 				CA16B55B285A1448006421C5 /* Owner.swift */,
 			);
 			path = Codable;
-			sourceTree = "<group>";
-		};
-		CA5F3FEF28571CA10095E92F /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				CA5F3FF228571CC40095E92F /* UIImageView.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		CA7BDA69285CAFD000BE3A7A /* Router */ = {
@@ -464,7 +453,6 @@
 				CA7BDA7B285CD56F00BE3A7A /* DetailPresenter.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* DetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
-				CA5F3FF328571CC40095E92F /* UIImageView.swift in Sources */,
 				CA7BDA7E285CDAC800BE3A7A /* GitHubAPIClientCollection.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 			);
