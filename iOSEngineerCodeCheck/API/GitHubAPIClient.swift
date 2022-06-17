@@ -15,13 +15,15 @@ class GitHubAPIClient {
 
     /// リポジトリを取得する
     /// - Parameters:
-    ///   - searchRepositoryURL: リポジトリ検索APIのURL
+    ///   - searchWord: リポジトリ検索のキーワード
     ///   - successHandler: リポジトリ取得が成功した場合の処理
     ///   - failureHandler: リポジトリ取得が失敗した場合の処理
     /// - Returns: なし
-    func fetchRepositories(with searchRepositoryURL: URL,
+    func fetchRepositories(with searchWord: String,
                            successHandler: @escaping (_ items: [Repository]) -> Void,
                            failureHandler: @escaping (_ errorDescription: String) -> Void) {
+        guard let searchRepositoryURL = URL(string: "https://api.github.com/search/repositories?q=\(searchWord)")
+        else { return }
 
         request = AF.request(searchRepositoryURL, method: .get).response { response in
             switch response.result {

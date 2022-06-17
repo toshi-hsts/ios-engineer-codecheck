@@ -34,7 +34,7 @@ extension RootPresenter: RootInputCollection {
         gitHubAPIClient.cancelTask()
     }
     ///　検索ボタンが押された際の処理
-    func tapSearchButton(with searchWord: URL) {
+    func tapSearchButton(with searchWord: String) {
         gitHubAPIClient.fetchRepositories(with: searchWord) { [weak self] items in
             self?.setRepositories(from: items)
             self?.view.reloadTableView()

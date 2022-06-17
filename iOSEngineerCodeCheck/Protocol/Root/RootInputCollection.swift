@@ -12,6 +12,6 @@ protocol RootInputCollection: AnyObject {
     var repositories: [Repository] { get }
     func setRepositories(from items: [Repository])
     func tapTableViewCell(at index: Int)
-    func tapSearchButton(with searchWord: URL)
+    func tapSearchButton(with searchWord: String)
     func changedSearchText()
 }

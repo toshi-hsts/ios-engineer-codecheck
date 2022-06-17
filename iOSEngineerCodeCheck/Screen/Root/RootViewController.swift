@@ -53,11 +53,10 @@ extension RootViewController: UISearchBarDelegate {
     // 検索ボタンがタップされるたびに呼ばれる
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard searchBar.text?.isEmpty == false,
-              let searchWord = searchBar.text,
-              let searchRepositoryURL = URL(string: "https://api.github.com/search/repositories?q=\(searchWord)")
+              let searchWord = searchBar.text
         else { return }
 
-        presenter.tapSearchButton(with: searchRepositoryURL)
+        presenter.tapSearchButton(with: searchWord)
     }
 }
 
