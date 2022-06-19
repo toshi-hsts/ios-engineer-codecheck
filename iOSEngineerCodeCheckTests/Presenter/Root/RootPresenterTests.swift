@@ -54,6 +54,13 @@ class RootPresenterTests: XCTestCase {
         XCTAssertEqual(rootVCMock.calledFunctionName, "moveToDeail(with:)")
     }
 
+    ///　検索バーでテキストの変更があった際の処理
+    func testChangedSearchText() {
+        rootPresenter.changedSearchText()
+        // モック関数が呼ばれていることを確認する
+        XCTAssertEqual(gitHubAPIClientMock.calledFunctionName, "cancelTask()")
+    }
+
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

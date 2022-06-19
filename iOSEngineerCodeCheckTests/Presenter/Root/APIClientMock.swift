@@ -10,11 +10,15 @@ import Foundation
 @testable import iOSEngineerCodeCheck
 
 class APIClientMock: GitHubAPIClientCollection {
+
+    var calledFunctionName = ""
+
     func fetchRepositories(with searchWord: String,
                            successHandler: @escaping ([Repository]) -> Void,
                            failureHandler: @escaping (String) -> Void) {
     }
 
     func cancelTask() {
+        calledFunctionName = #function
     }
 }
