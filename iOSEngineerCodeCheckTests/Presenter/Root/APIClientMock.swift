@@ -16,6 +16,7 @@ class APIClientMock: GitHubAPIClientCollection {
     func fetchRepositories(with searchWord: String,
                            successHandler: @escaping ([Repository]) -> Void,
                            failureHandler: @escaping (String) -> Void) {
+        calledFunctionName = #function
     }
 
     func cancelTask() {

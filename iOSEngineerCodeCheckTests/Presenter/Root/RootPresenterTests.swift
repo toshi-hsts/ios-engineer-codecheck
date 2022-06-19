@@ -61,6 +61,14 @@ class RootPresenterTests: XCTestCase {
         XCTAssertEqual(gitHubAPIClientMock.calledFunctionName, "cancelTask()")
     }
 
+    ///　検索ボタンが押された際の処理
+    func testTapSearchButton() {
+        rootPresenter.tapSearchButton(with: "test")
+
+        // モック関数が呼ばれていることを確認する
+        XCTAssertEqual(gitHubAPIClientMock.calledFunctionName, "fetchRepositories(with:successHandler:failureHandler:)")
+    }
+
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
