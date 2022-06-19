@@ -15,6 +15,10 @@ class DetailUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
         app.launch()
+        // 検索
+        searchRepository()
+        // セルタップ
+        tapCell()
     }
 
     override func tearDownWithError() throws {
@@ -23,13 +27,6 @@ class DetailUITests: XCTestCase {
 
     func testInitialScreen() throws {
         XCTContext.runActivity(named: "初期画面が表示されていること") { _ in
-            // 検索
-            searchRepository()
-
-            // セルタップ
-            let firstCell = app.cells.element(boundBy: 0)
-            firstCell.tap()
-
             // 初期画面表示の確認
             let avaterImage = app.images.firstMatch
             let title = app.staticTexts["title"]
@@ -51,13 +48,6 @@ class DetailUITests: XCTestCase {
 
     func testBackRootScreen() throws {
         XCTContext.runActivity(named: "Root画面に遷移できること") { _ in
-            // 検索
-            searchRepository()
-
-            // セルタップ
-            let firstCell = app.cells.element(boundBy: 0)
-            firstCell.tap()
-
             // root画面に戻るかの確認
             let rootScreenTitle = "Root View Controller"
             app.buttons[rootScreenTitle].tap()
@@ -74,5 +64,10 @@ class DetailUITests: XCTestCase {
         searchBar.typeText(searchWord)
         app.buttons["Search"].tap()
         sleep(3)
+    }
+
+    private func tapCell() {
+        let firstCell = app.cells.element(boundBy: 0)
+        firstCell.tap()
     }
 }
