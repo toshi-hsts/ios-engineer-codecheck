@@ -33,6 +33,7 @@
 		CA85E6CC285B34B700BCB89C /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA85E6CE285B34B700BCB89C /* Detail.storyboard */; };
 		CAB6E2BA285F2B8A006144B2 /* APIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6E2B9285F2B8A006144B2 /* APIClientMock.swift */; };
 		CAB6E2BC285F2BAD006144B2 /* RootVCMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6E2BB285F2BAD006144B2 /* RootVCMock.swift */; };
+		CAB6E2BF285F3A20006144B2 /* DetailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6E2BE285F3A20006144B2 /* DetailUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		CA85E6CD285B34B700BCB89C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Detail.storyboard; sourceTree = "<group>"; };
 		CAB6E2B9285F2B8A006144B2 /* APIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientMock.swift; sourceTree = "<group>"; };
 		CAB6E2BB285F2BAD006144B2 /* RootVCMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVCMock.swift; sourceTree = "<group>"; };
+		CAB6E2BE285F3A20006144B2 /* DetailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +163,8 @@
 		BFD945FF244DC5EB0012785A /* iOSEngineerCodeCheckUITests */ = {
 			isa = PBXGroup;
 			children = (
-				CAB6E2BD285F3728006144B2 /* Root */,
+				BFD94600244DC5EC0012785A /* RootUITests.swift */,
+				CAB6E2BE285F3A20006144B2 /* DetailUITests.swift */,
 				BFD94602244DC5EC0012785A /* Info.plist */,
 			);
 			path = iOSEngineerCodeCheckUITests;
@@ -296,14 +299,6 @@
 				BFD945F5244DC5EB0012785A /* RootPresenterTests.swift */,
 				CAB6E2B9285F2B8A006144B2 /* APIClientMock.swift */,
 				CAB6E2BB285F2BAD006144B2 /* RootVCMock.swift */,
-			);
-			path = Root;
-			sourceTree = "<group>";
-		};
-		CAB6E2BD285F3728006144B2 /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				BFD94600244DC5EC0012785A /* RootUITests.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -502,6 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAB6E2BF285F3A20006144B2 /* DetailUITests.swift in Sources */,
 				BFD94601244DC5EC0012785A /* RootUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
