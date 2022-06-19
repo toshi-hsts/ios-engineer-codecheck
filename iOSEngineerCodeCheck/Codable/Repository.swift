@@ -33,3 +33,9 @@ struct Repository: Codable {
         case owner
     }
 }
+
+extension Repository: Equatable {
+    static func == (lhs: Repository, rhs: Repository) -> Bool {
+        true
+    }
+}

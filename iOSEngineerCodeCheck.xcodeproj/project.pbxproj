@@ -14,7 +14,7 @@
 		BFD945E6244DC5E80012785A /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFD945E4244DC5E80012785A /* Root.storyboard */; };
 		BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFD945E7244DC5EB0012785A /* Assets.xcassets */; };
 		BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFD945E9244DC5EB0012785A /* LaunchScreen.storyboard */; };
-		BFD945F6244DC5EB0012785A /* IOSEngineerCodeCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945F5244DC5EB0012785A /* IOSEngineerCodeCheckTests.swift */; };
+		BFD945F6244DC5EB0012785A /* RootPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945F5244DC5EB0012785A /* RootPresenterTests.swift */; };
 		BFD94601244DC5EC0012785A /* IOSEngineerCodeCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD94600244DC5EC0012785A /* IOSEngineerCodeCheckUITests.swift */; };
 		CA16B54B285A0E61006421C5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CA16B54A285A0E61006421C5 /* Alamofire */; };
 		CA16B54E285A1033006421C5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CA16B54D285A1033006421C5 /* SDWebImage */; };
@@ -31,6 +31,8 @@
 		CA7BDA7B285CD56F00BE3A7A /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA7A285CD56F00BE3A7A /* DetailPresenter.swift */; };
 		CA7BDA7E285CDAC800BE3A7A /* GitHubAPIClientCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA7D285CDAC800BE3A7A /* GitHubAPIClientCollection.swift */; };
 		CA85E6CC285B34B700BCB89C /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA85E6CE285B34B700BCB89C /* Detail.storyboard */; };
+		CAB6E2BA285F2B8A006144B2 /* APIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6E2B9285F2B8A006144B2 /* APIClientMock.swift */; };
+		CAB6E2BC285F2BAD006144B2 /* RootVCMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6E2BB285F2BAD006144B2 /* RootVCMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +63,7 @@
 		BFD945EA244DC5EB0012785A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFD945EC244DC5EB0012785A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFD945F1244DC5EB0012785A /* iOSEngineerCodeCheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSEngineerCodeCheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFD945F5244DC5EB0012785A /* IOSEngineerCodeCheckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSEngineerCodeCheckTests.swift; sourceTree = "<group>"; };
+		BFD945F5244DC5EB0012785A /* RootPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresenterTests.swift; sourceTree = "<group>"; };
 		BFD945F7244DC5EB0012785A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFD945FC244DC5EB0012785A /* iOSEngineerCodeCheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSEngineerCodeCheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD94600244DC5EC0012785A /* IOSEngineerCodeCheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSEngineerCodeCheckUITests.swift; sourceTree = "<group>"; };
@@ -79,6 +81,8 @@
 		CA7BDA7A285CD56F00BE3A7A /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		CA7BDA7D285CDAC800BE3A7A /* GitHubAPIClientCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIClientCollection.swift; sourceTree = "<group>"; };
 		CA85E6CD285B34B700BCB89C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Detail.storyboard; sourceTree = "<group>"; };
+		CAB6E2B9285F2B8A006144B2 /* APIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientMock.swift; sourceTree = "<group>"; };
+		CAB6E2BB285F2BAD006144B2 /* RootVCMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVCMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +152,7 @@
 		BFD945F4244DC5EB0012785A /* iOSEngineerCodeCheckTests */ = {
 			isa = PBXGroup;
 			children = (
-				BFD945F5244DC5EB0012785A /* IOSEngineerCodeCheckTests.swift */,
+				CAB6E2B7285F2AAA006144B2 /* Presenter */,
 				BFD945F7244DC5EB0012785A /* Info.plist */,
 			);
 			path = iOSEngineerCodeCheckTests;
@@ -276,6 +280,24 @@
 				BFD945E7244DC5EB0012785A /* Assets.xcassets */,
 			);
 			path = Asset;
+			sourceTree = "<group>";
+		};
+		CAB6E2B7285F2AAA006144B2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CAB6E2B8285F2AB2006144B2 /* Root */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CAB6E2B8285F2AB2006144B2 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				BFD945F5244DC5EB0012785A /* RootPresenterTests.swift */,
+				CAB6E2B9285F2B8A006144B2 /* APIClientMock.swift */,
+				CAB6E2BB285F2BAD006144B2 /* RootVCMock.swift */,
+			);
+			path = Root;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,7 +484,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFD945F6244DC5EB0012785A /* IOSEngineerCodeCheckTests.swift in Sources */,
+				BFD945F6244DC5EB0012785A /* RootPresenterTests.swift in Sources */,
+				CAB6E2BA285F2B8A006144B2 /* APIClientMock.swift in Sources */,
+				CAB6E2BC285F2BAD006144B2 /* RootVCMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
