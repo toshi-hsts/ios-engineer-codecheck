@@ -58,4 +58,25 @@ class RootUITests: XCTestCase {
             XCTAssertEqual(searchBar.value as? String, searchWord)
         }
     }
+
+    func testShowDetail() throws {
+        XCTContext.runActivity(named: "Detail画面に遷移できること") { _ in
+            let searchWord = "aaa"
+            let searchBar = app.searchFields.firstMatch
+
+            // 検索
+            searchBar.tap()
+            searchBar.typeText(searchWord)
+            app.buttons["Search"].tap()
+            sleep(3)
+
+            // セルタップ
+            let firstCell = app.cells.element(boundBy: 0)
+            firstCell.tap()
+
+            //　詳細画面表示されているか確認
+            let rootScreenTitle = "Root View Controller"
+            XCTAssertTrue(app.buttons[rootScreenTitle].exists)
+        }
+    }
 }
