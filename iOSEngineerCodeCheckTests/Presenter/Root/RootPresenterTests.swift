@@ -31,13 +31,6 @@ class RootPresenterTests: XCTestCase {
 
     lazy var testRepositories: [Repository] = [firstTestRepository, secondTestRepository, thirdTestRepository]
 
-    override func setUpWithError() throws {
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     /// リポジトリリスト更新
     func testSetRepositories() throws {
         rootPresenter.setRepositories(from: testRepositories)
@@ -67,12 +60,5 @@ class RootPresenterTests: XCTestCase {
 
         // モック関数が呼ばれていることを確認する
         XCTAssertEqual(gitHubAPIClientMock.calledFunctionName, "fetchRepositories(with:successHandler:failureHandler:)")
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 }
