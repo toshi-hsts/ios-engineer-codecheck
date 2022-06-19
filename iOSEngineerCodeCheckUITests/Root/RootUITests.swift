@@ -8,7 +8,7 @@
 
 import XCTest
 
-class IOSEngineerCodeCheckUITests: XCTestCase {
+class RootUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -26,21 +26,28 @@ class IOSEngineerCodeCheckUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testInitialScreen() throws {
         let app = XCUIApplication()
         app.launch()
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+        XCTContext.runActivity(named: "SearchBarが表示されていること") { _ in
+            let searchBar = app.searchFields.firstMatch
+            XCTAssertTrue(searchBar.exists)
+        }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
+        XCTContext.runActivity(named: "SearchBarに初期文字列が入力されていること") { _ in
+            let searchBar = app.searchFields.firstMatch
+            XCTAssertEqual(searchBar.value as? String, "GitHubのリポジトリを検索できるよー")
+        }
+
+        XCTContext.runActivity(named: "TableViewが表示されていること") { _ in
+            let tableView = app.tables.firstMatch
+            XCTAssertTrue(tableView.exists)
+        }
+
+        XCTContext.runActivity(named: "TableViewにセルが表示されていないこと") { _ in
+            let tableCell = app.tableRows.firstMatch
+            XCTAssertFalse(tableCell.exists)
         }
     }
 }
