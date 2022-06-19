@@ -9,17 +9,11 @@
 import XCTest
 
 class RootUITests: XCTestCase {
+    let app = XCUIApplication()
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        /* In UI tests it’s important to set the initial state
-            - such as interface orientation
-            - required for your tests before they run.
-            The setUp method is a good place to do this. */
+        app.launch()
     }
 
     override func tearDownWithError() throws {
@@ -27,9 +21,6 @@ class RootUITests: XCTestCase {
     }
 
     func testInitialScreen() throws {
-        let app = XCUIApplication()
-        app.launch()
-
         XCTContext.runActivity(named: "SearchBarが表示されていること") { _ in
             let searchBar = app.searchFields.firstMatch
             XCTAssertTrue(searchBar.exists)
@@ -46,8 +37,25 @@ class RootUITests: XCTestCase {
         }
 
         XCTContext.runActivity(named: "TableViewにセルが表示されていないこと") { _ in
-            let tableCell = app.tableRows.firstMatch
-            XCTAssertFalse(tableCell.exists)
+            let firstCell = app.cells.element(boundBy: 0)
+            XCTAssertFalse(firstCell.exists)
+        }
+    }
+
+    func testSearchRepository() throws {
+        XCTContext.runActivity(named: "レポジトリ検索ができること") { _ in
+            let searchWord = "aaa"
+            let searchBar = app.searchFields.firstMatch
+
+            searchBar.tap()
+            searchBar.typeText(searchWord)
+            app.buttons["Search"].tap()
+            sleep(3)
+
+            let firstCell = app.cells.element(boundBy: 0)
+
+            XCTAssertTrue(firstCell.exists)
+            XCTAssertEqual(searchBar.value as? String, searchWord)
         }
     }
 }
