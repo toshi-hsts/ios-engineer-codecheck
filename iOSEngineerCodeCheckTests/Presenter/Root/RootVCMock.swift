@@ -10,7 +10,10 @@ import Foundation
 @testable import iOSEngineerCodeCheck
 
 class RootVCMock: RootOutputCollection {
+    var calledFunctionName = ""
+
     func moveToDeail(with repository: Repository) {
+        calledFunctionName = #function
     }
 
     func reloadTableView() {
