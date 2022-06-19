@@ -34,6 +34,7 @@
 		CAB6E2BA285F2B8A006144B2 /* APIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6E2B9285F2B8A006144B2 /* APIClientMock.swift */; };
 		CAB6E2BC285F2BAD006144B2 /* RootVCMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6E2BB285F2BAD006144B2 /* RootVCMock.swift */; };
 		CAB6E2BF285F3A20006144B2 /* DetailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6E2BE285F3A20006144B2 /* DetailUITests.swift */; };
+		CAB6E2C2285F3E02006144B2 /* GitHubAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6E2C1285F3E02006144B2 /* GitHubAPIClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		CAB6E2B9285F2B8A006144B2 /* APIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientMock.swift; sourceTree = "<group>"; };
 		CAB6E2BB285F2BAD006144B2 /* RootVCMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVCMock.swift; sourceTree = "<group>"; };
 		CAB6E2BE285F3A20006144B2 /* DetailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUITests.swift; sourceTree = "<group>"; };
+		CAB6E2C1285F3E02006144B2 /* GitHubAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 		BFD945F4244DC5EB0012785A /* iOSEngineerCodeCheckTests */ = {
 			isa = PBXGroup;
 			children = (
+				CAB6E2C0285F3DE6006144B2 /* API */,
 				CAB6E2B7285F2AAA006144B2 /* Presenter */,
 				BFD945F7244DC5EB0012785A /* Info.plist */,
 			);
@@ -301,6 +304,14 @@
 				CAB6E2BB285F2BAD006144B2 /* RootVCMock.swift */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		CAB6E2C0285F3DE6006144B2 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				CAB6E2C1285F3E02006144B2 /* GitHubAPIClientTests.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAB6E2C2285F3E02006144B2 /* GitHubAPIClientTests.swift in Sources */,
 				BFD945F6244DC5EB0012785A /* RootPresenterTests.swift in Sources */,
 				CAB6E2BA285F2B8A006144B2 /* APIClientMock.swift in Sources */,
 				CAB6E2BC285F2BAD006144B2 /* RootVCMock.swift in Sources */,
