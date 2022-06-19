@@ -63,6 +63,7 @@ class DetailUITests: XCTestCase {
         searchBar.tap()
         searchBar.typeText(searchWord)
         app.buttons["Search"].tap()
+        // TODO: インジケータを実装したら、sleepを使わずPredictionを使う形に変更する
         sleep(3)
     }
 
