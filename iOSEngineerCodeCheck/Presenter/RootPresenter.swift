@@ -68,7 +68,7 @@ extension RootPresenter: RootInputCollection {
     /// リポジトリ取得
     private func fetchRepositories() {
         gitHubAPIClient.fetchRepositories(with: searchedWord, with: page) { [weak self] items in
-            self?.setRepositories(from: items)
+            self?.repositories += items
             self?.loadState = .standby
             self?.view.reloadTableView()
             self?.view.stopAnimatingIndicator()
