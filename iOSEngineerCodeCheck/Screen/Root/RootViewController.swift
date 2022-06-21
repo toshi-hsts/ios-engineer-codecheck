@@ -17,11 +17,6 @@ class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-    }
-
-    private func setup() {
-        repositorySearchBar.text = "GitHubのリポジトリを検索できるよー"
     }
 
     func inject(_ presenter: RootInputCollection) {
@@ -31,12 +26,6 @@ class RootViewController: UIViewController {
 
 // MARK: - UISearchBarDelegate
 extension RootViewController: UISearchBarDelegate {
-    // フォーカスが当たるたびに呼ばれる
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.text = ""
-        return true
-    }
-
     // 検索文字が変更されるたびに呼ばれる
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presenter.changedSearchText()
