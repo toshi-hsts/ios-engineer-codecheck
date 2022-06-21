@@ -34,6 +34,8 @@ class DetailUITests: XCTestCase {
         let watchers = app.staticTexts["watchers"]
         let forks = app.staticTexts["forks"]
         let issues = app.staticTexts["issues"]
+        let description = app.staticTexts["description"]
+        let showMoreButton = app.buttons["showMoreButton"]
 
         XCTAssertTrue(avaterImage.exists)
         XCTAssertTrue(title.exists)
@@ -42,6 +44,8 @@ class DetailUITests: XCTestCase {
         XCTAssertTrue(watchers.exists)
         XCTAssertTrue(forks.exists)
         XCTAssertTrue(issues.exists)
+        XCTAssertTrue(description.exists)
+        XCTAssertTrue(showMoreButton.exists)
     }
 
     // Root画面に遷移できること

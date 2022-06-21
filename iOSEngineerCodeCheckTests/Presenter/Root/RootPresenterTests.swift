@@ -16,17 +16,17 @@ class RootPresenterTests: XCTestCase {
 
     let firstTestRepository: Repository = .init(fullName: "test1", initialLanguage: "swift",
                                                 stargazersCount: 10, watchersCount: 10, forksCount: 10,
-                                                openIssuesCount: 10,
+                                                openIssuesCount: 10, htmlURL: "", description: "description",
                                                 owner: .init(avatarURL: "url1"))
 
     let secondTestRepository: Repository = .init(fullName: "test2", initialLanguage: "python",
                                                  stargazersCount: 20, watchersCount: 20, forksCount: 20,
-                                                 openIssuesCount: 20,
+                                                 openIssuesCount: 20, htmlURL: "", description: "description",
                                                  owner: .init(avatarURL: "url2"))
 
     let thirdTestRepository: Repository = .init(fullName: "test3", initialLanguage: nil,
                                                 stargazersCount: 30, watchersCount: 30, forksCount: 30,
-                                                openIssuesCount: 30,
+                                                openIssuesCount: 30, htmlURL: "", description: "description",
                                                 owner: .init(avatarURL: "url3"))
 
     lazy var testRepositories: [Repository] = [firstTestRepository, secondTestRepository, thirdTestRepository]
