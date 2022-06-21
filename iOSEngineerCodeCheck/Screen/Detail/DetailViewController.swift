@@ -20,6 +20,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak private var forksLabel: UILabel!
     @IBOutlet weak private var issuesLabel: UILabel!
     @IBOutlet weak private var descriptionLabel: UILabel!
+    @IBOutlet weak private var descriptionTitleLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +31,16 @@ class DetailViewController: UIViewController {
         let repository = presenter.repository
 
         titleLabel.text = repository.fullName
-        languageLabel.text = "Written in \(repository.language)"
-        starsLabel.text = "\(repository.stargazersCount) stars"
-        watchersLabel.text = "\(repository.watchersCount) watchers"
-        forksLabel.text = "\(repository.forksCount) forks"
-        issuesLabel.text = "\(repository.openIssuesCount) open issues"
+        languageLabel.text = repository.language
+        starsLabel.text = String(repository.stargazersCount)
+        watchersLabel.text = String(repository.watchersCount)
+        forksLabel.text = String(repository.forksCount)
+        issuesLabel.text = String(repository.openIssuesCount)
         descriptionLabel.text = repository.description
+
+        if repository.description == nil {
+            descriptionTitleLabel.isHidden = true
+        }
 
         setOwnerAvatarImage()
     }
