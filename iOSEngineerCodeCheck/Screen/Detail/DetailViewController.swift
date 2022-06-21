@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak private var watchersLabel: UILabel!
     @IBOutlet weak private var forksLabel: UILabel!
     @IBOutlet weak private var issuesLabel: UILabel!
+    @IBOutlet weak private var descriptionLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class DetailViewController: UIViewController {
         watchersLabel.text = "\(repository.watchersCount) watchers"
         forksLabel.text = "\(repository.forksCount) forks"
         issuesLabel.text = "\(repository.openIssuesCount) open issues"
+        descriptionLabel.text = repository.description
 
         setOwnerAvatarImage()
     }

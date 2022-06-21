@@ -74,24 +74,34 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoX-7w-CCN">
+                                <rect key="frame" x="20" y="754" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yyz-Kx-jDa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Jrx-qh-LXJ" firstAttribute="centerX" secondItem="Zw7-U1-C7q" secondAttribute="centerX" id="4R2-iN-V7y"/>
                             <constraint firstItem="VbP-CO-Zs9" firstAttribute="top" secondItem="Jrx-qh-LXJ" secondAttribute="bottom" constant="22.5" id="Cdk-dg-0Yx"/>
+                            <constraint firstItem="yyz-Kx-jDa" firstAttribute="trailing" secondItem="UoX-7w-CCN" secondAttribute="trailing" constant="20" id="F9K-dh-b10"/>
                             <constraint firstItem="VbP-CO-Zs9" firstAttribute="centerX" secondItem="Jrx-qh-LXJ" secondAttribute="centerX" id="P62-Q8-cPh"/>
                             <constraint firstItem="Zw7-U1-C7q" firstAttribute="centerY" secondItem="yyz-Kx-jDa" secondAttribute="centerY" multiplier="0.7" id="Sv3-TR-mS8"/>
+                            <constraint firstItem="UoX-7w-CCN" firstAttribute="top" secondItem="VbP-CO-Zs9" secondAttribute="bottom" constant="63.5" id="YTQ-93-CtC"/>
                             <constraint firstItem="Zw7-U1-C7q" firstAttribute="leading" secondItem="yyz-Kx-jDa" secondAttribute="leading" constant="20" id="aB5-fC-3wW"/>
                             <constraint firstItem="VbP-CO-Zs9" firstAttribute="width" secondItem="Zw7-U1-C7q" secondAttribute="width" id="elT-pd-HSn"/>
                             <constraint firstItem="Jrx-qh-LXJ" firstAttribute="top" secondItem="Zw7-U1-C7q" secondAttribute="bottom" constant="28" id="fnw-WJ-1Sd"/>
                             <constraint firstItem="Jrx-qh-LXJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yyz-Kx-jDa" secondAttribute="leading" constant="20" id="ljK-i6-IIK"/>
                             <constraint firstItem="yyz-Kx-jDa" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Jrx-qh-LXJ" secondAttribute="trailing" constant="20" id="lqm-9G-Stf"/>
                             <constraint firstItem="yyz-Kx-jDa" firstAttribute="trailing" secondItem="Zw7-U1-C7q" secondAttribute="trailing" constant="20" id="qU5-Cb-YPb"/>
+                            <constraint firstItem="UoX-7w-CCN" firstAttribute="leading" secondItem="yyz-Kx-jDa" secondAttribute="leading" constant="20" id="zeK-dU-8aD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="f1m-Ei-MWd"/>
                     <connections>
+                        <outlet property="descriptionLabel" destination="UoX-7w-CCN" id="hBS-E8-cUW"/>
                         <outlet property="forksLabel" destination="139-aI-JKH" id="Zfu-2y-Mon"/>
                         <outlet property="issuesLabel" destination="dOA-ga-RyF" id="OYv-Bi-7Uv"/>
                         <outlet property="languageLabel" destination="gDS-ux-p2f" id="rbi-lN-oad"/>
