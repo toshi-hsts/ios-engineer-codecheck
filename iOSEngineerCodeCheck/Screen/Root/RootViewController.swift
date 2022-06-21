@@ -136,6 +136,9 @@ extension RootViewController: RootOutputCollection {
                                       message: message,
                                       preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "再読み込み", style: .default, handler: { _ in
+            self.presenter.reload()
+        }))
         present(alert, animated: true)
     }
 }

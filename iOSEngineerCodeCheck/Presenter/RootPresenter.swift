@@ -64,6 +64,11 @@ extension RootPresenter: RootInputCollection {
 
         fetchRepositories()
     }
+    /// 再読み込み
+    func reload() {
+        // 検索ボタン押下時と同じ処理を試す
+        tapSearchButton(with: searchedWord)
+    }
 
     /// リポジトリ取得
     private func fetchRepositories() {
