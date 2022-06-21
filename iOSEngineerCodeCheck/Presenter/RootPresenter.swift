@@ -79,9 +79,10 @@ extension RootPresenter: RootInputCollection {
             self?.view.reloadTableView()
             self?.view.stopAnimatingIndicator()
         } failureHandler: { [weak self] errorDescription, statusCode in
-            self?.view.stopAnimatingIndicator()
             self?.loadState = .standby
             self?.handleStatusCode(with: statusCode)
+            self?.view.stopAnimatingIndicator()
+            self?.view.reloadTableView()
             print("errro:", errorDescription)
         }
     }
