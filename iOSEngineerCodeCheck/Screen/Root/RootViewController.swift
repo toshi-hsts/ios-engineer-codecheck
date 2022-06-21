@@ -22,6 +22,12 @@ class RootViewController: UIViewController {
         setup()
     }
 
+    // 画面タッチ時の挙動
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // キーボード閉じる
+        view.endEditing(true)
+    }
+
     private func setup() {
         totalCountLabel.text = ""
     }
@@ -44,6 +50,7 @@ extension RootViewController: UISearchBarDelegate {
               let searchWord = searchBar.text
         else { return }
 
+        searchBar.resignFirstResponder()
         presenter.tapSearchButton(with: searchWord)
     }
 }
