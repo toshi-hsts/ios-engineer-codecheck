@@ -23,13 +23,16 @@ class GitHubAPIClient: GitHubAPIClientCollection {
     func fetchRepositories(with searchWord: String,
                            with page: Int,
                            successHandler: @escaping (_ items: [Repository], _ totalCount: Int) -> Void,
-                           failureHandler: @escaping (_ errorDescription: String, _ statusCode: Int) -> Void) {
+                           failureHandler: @escaping (_ errorDescription: String, _ statusCode: Int?) -> Void) {
         guard let searchRepositoryURL =
                     URL(string: "https://api.github.com/search/repositories?q=\(searchWord)&page=\(page)")
         else { return }
 
         request = AF.request(searchRepositoryURL, method: .get).response { response in
-            guard let statusCode = response.response?.statusCode else { return }
+            guard let statusCode = response.response?.statusCode else {
+                failureHandler("status code is nil", nil)
+                return
+            }
 
             switch response.result {
             case .success(let data):

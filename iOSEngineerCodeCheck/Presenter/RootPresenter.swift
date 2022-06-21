@@ -81,7 +81,7 @@ extension RootPresenter: RootInputCollection {
         } failureHandler: { [weak self] errorDescription, statusCode in
             self?.view.stopAnimatingIndicator()
             self?.loadState = .standby
-            self?.view.showErrorAlert(with: statusCode)
+            self?.handleStatusCode(with: statusCode)
             print("errro:", errorDescription)
         }
     }
@@ -92,5 +92,20 @@ extension RootPresenter: RootInputCollection {
             let convertedTotalCount = totalCount.addComma()
             view.setTotalCountLabel(with: convertedTotalCount)
         }
+    }
+
+    private func handleStatusCode(with statusCode: Int?) {
+        let convertedStatusCode: Int = statusCode ?? 0 // nilは0としてハンドリングする
+        let statusCodeCategory = StatusCodeCategory.convert(from: convertedStatusCode)
+        var message = ""
+
+        switch statusCodeCategory {
+        case .serverError:
+            message = "メンテナンス中、もしくは障害が発生しています。ご迷惑おかけしますが\nしばらくお待ちください。"
+        default:
+            message = "通信環境が良い場所で再度お試しください。解決しない場合は〇〇までご連絡お願いします。"
+        }
+
+        view.showErrorAlert(with: message)
     }
 }
