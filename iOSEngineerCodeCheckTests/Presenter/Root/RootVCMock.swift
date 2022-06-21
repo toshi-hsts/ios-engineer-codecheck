@@ -18,4 +18,11 @@ class RootVCMock: RootOutputCollection {
 
     func reloadTableView() {
     }
+
+    func startAnimatingIndicator() {
+        calledFunctionName = #function
+    }
+
+    func stopAnimatingIndicator() {
+    }
 }

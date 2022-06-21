@@ -25,48 +25,51 @@ class DetailUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    // 初期画面が表示されていること
     func testInitialScreen() throws {
-        XCTContext.runActivity(named: "初期画面が表示されていること") { _ in
-            // 初期画面表示の確認
-            let avaterImage = app.images.firstMatch
-            let title = app.staticTexts["title"]
-            let language = app.staticTexts["language"]
-            let stars = app.staticTexts["stars"]
-            let watchers = app.staticTexts["watchers"]
-            let forks = app.staticTexts["forks"]
-            let issues = app.staticTexts["issues"]
+        let avaterImage = app.images.firstMatch
+        let title = app.staticTexts["title"]
+        let language = app.staticTexts["language"]
+        let stars = app.staticTexts["stars"]
+        let watchers = app.staticTexts["watchers"]
+        let forks = app.staticTexts["forks"]
+        let issues = app.staticTexts["issues"]
 
-            XCTAssertTrue(avaterImage.exists)
-            XCTAssertTrue(title.exists)
-            XCTAssertTrue(language.exists)
-            XCTAssertTrue(stars.exists)
-            XCTAssertTrue(watchers.exists)
-            XCTAssertTrue(forks.exists)
-            XCTAssertTrue(issues.exists)
-        }
+        XCTAssertTrue(avaterImage.exists)
+        XCTAssertTrue(title.exists)
+        XCTAssertTrue(language.exists)
+        XCTAssertTrue(stars.exists)
+        XCTAssertTrue(watchers.exists)
+        XCTAssertTrue(forks.exists)
+        XCTAssertTrue(issues.exists)
     }
 
+    // Root画面に遷移できること
     func testBackRootScreen() throws {
-        XCTContext.runActivity(named: "Root画面に遷移できること") { _ in
-            // root画面に戻るかの確認
-            let rootScreenTitle = "Root View Controller"
-            app.buttons[rootScreenTitle].tap()
-            XCTAssertTrue(app.navigationBars[rootScreenTitle].exists)
-        }
+        let rootScreenTitle = "Root View Controller"
+        app.buttons[rootScreenTitle].tap()
+        XCTAssertTrue(app.navigationBars[rootScreenTitle].exists)
     }
 
+    // 検索
     private func searchRepository() {
-        let searchWord = "aaa"
+        let searchWord = "a"
         let searchBar = app.searchFields.firstMatch
 
         // 検索
         searchBar.tap()
         searchBar.typeText(searchWord)
         app.buttons["Search"].tap()
-        // TODO: インジケータを実装したら、sleepを使わずPredictionを使う形に変更する
-        sleep(3)
+
+        // 通信待ち
+        let loadingText = app.otherElements["loadingView"]
+        let notExists = NSPredicate(format: "exists == false")
+
+        expectation(for: notExists, evaluatedWith: loadingText, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
+    // セルタップ
     private func tapCell() {
         let firstCell = app.cells.element(boundBy: 0)
         firstCell.tap()

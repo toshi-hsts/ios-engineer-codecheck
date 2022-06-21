@@ -60,5 +60,6 @@ class RootPresenterTests: XCTestCase {
 
         // モック関数が呼ばれていることを確認する
         XCTAssertEqual(gitHubAPIClientMock.calledFunctionName, "fetchRepositories(with:successHandler:failureHandler:)")
+        XCTAssertEqual(rootVCMock.calledFunctionName, "startAnimatingIndicator()")
     }
 }

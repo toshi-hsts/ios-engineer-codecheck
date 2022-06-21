@@ -43,6 +43,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <accessibility key="accessibilityConfiguration" identifier="loadingView"/>
             <constraints>
                 <constraint firstItem="TOw-dt-2kS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9NW-Vb-zQD"/>
                 <constraint firstItem="TOw-dt-2kS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Q39-uJ-a1n"/>
