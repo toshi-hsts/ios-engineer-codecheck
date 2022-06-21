@@ -29,6 +29,7 @@
 		CA64438A28621C0B00A75FB7 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA64438928621C0B00A75FB7 /* APIError.swift */; };
 		CA64438D2862427400A75FB7 /* NoResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA64438C2862427400A75FB7 /* NoResultView.xib */; };
 		CA64438F2862428D00A75FB7 /* NoResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA64438E2862428D00A75FB7 /* NoResultView.swift */; };
+		CA6443912862461500A75FB7 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6443902862461500A75FB7 /* RepositoryTableViewCell.swift */; };
 		CA7BDA6B285CB01700BE3A7A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA6A285CB01700BE3A7A /* Router.swift */; };
 		CA7BDA6E285CB1CA00BE3A7A /* RootPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA6D285CB1CA00BE3A7A /* RootPresenter.swift */; };
 		CA7BDA72285CB27200BE3A7A /* RootInputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA71285CB27200BE3A7A /* RootInputCollection.swift */; };
@@ -88,6 +89,7 @@
 		CA64438928621C0B00A75FB7 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		CA64438C2862427400A75FB7 /* NoResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoResultView.xib; sourceTree = "<group>"; };
 		CA64438E2862428D00A75FB7 /* NoResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultView.swift; sourceTree = "<group>"; };
+		CA6443902862461500A75FB7 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		CA7BDA6A285CB01700BE3A7A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CA7BDA6D285CB1CA00BE3A7A /* RootPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresenter.swift; sourceTree = "<group>"; };
 		CA7BDA71285CB27200BE3A7A /* RootInputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInputCollection.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 			children = (
 				BFD945E4244DC5E80012785A /* Root.storyboard */,
 				BFD945E2244DC5E80012785A /* RootViewController.swift */,
+				CA6443902862461500A75FB7 /* RepositoryTableViewCell.swift */,
 				CA64437F2861C85C00A75FB7 /* LoadingView */,
 				CA64438B2862424800A75FB7 /* NoResultView */,
 			);
@@ -539,6 +542,7 @@
 				CA64438A28621C0B00A75FB7 /* APIError.swift in Sources */,
 				CA7BDA6E285CB1CA00BE3A7A /* RootPresenter.swift in Sources */,
 				CA7BDA7B285CD56F00BE3A7A /* DetailPresenter.swift in Sources */,
+				CA6443912862461500A75FB7 /* RepositoryTableViewCell.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* DetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				CA7BDA7E285CDAC800BE3A7A /* GitHubAPIClientCollection.swift in Sources */,

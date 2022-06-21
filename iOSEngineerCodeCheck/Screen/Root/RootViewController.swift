@@ -66,14 +66,12 @@ extension RootViewController: UITableViewDataSource {
 
     // セル設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? RepositoryTableViewCell
         let repository = presenter.repositories[indexPath.row]
 
-        cell.textLabel?.text = repository.fullName
-//        cell.detailTextLabel?.text = repository.language
-        cell.tag = indexPath.row
+        cell?.setup(with: repository.fullName, with: repository.language)
 
-        return cell
+        return cell!
     }
 }
 
