@@ -51,6 +51,9 @@
                                     <outlet property="delegate" destination="Gkn-qx-lgv" id="7aC-FH-rHH"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvO-Tz-Vrh" customClass="LodingView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="139" width="414" height="723"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rge-Qb-mgd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -58,14 +61,19 @@
                             <constraint firstItem="1lx-2Q-2ZN" firstAttribute="top" secondItem="Rge-Qb-mgd" secondAttribute="top" id="015-Os-uWh"/>
                             <constraint firstItem="1lx-2Q-2ZN" firstAttribute="trailing" secondItem="Rge-Qb-mgd" secondAttribute="trailing" id="5Qg-fC-HuX"/>
                             <constraint firstItem="Rge-Qb-mgd" firstAttribute="trailing" secondItem="gl1-1J-tca" secondAttribute="trailing" id="Arb-EP-MiO"/>
+                            <constraint firstItem="Rge-Qb-mgd" firstAttribute="trailing" secondItem="xvO-Tz-Vrh" secondAttribute="trailing" id="IW0-6p-OZ6"/>
                             <constraint firstItem="1lx-2Q-2ZN" firstAttribute="leading" secondItem="Rge-Qb-mgd" secondAttribute="leading" id="TPp-U4-TUs"/>
                             <constraint firstItem="Rge-Qb-mgd" firstAttribute="bottom" secondItem="gl1-1J-tca" secondAttribute="bottom" id="WJ5-HK-kHl"/>
                             <constraint firstItem="gl1-1J-tca" firstAttribute="leading" secondItem="Rge-Qb-mgd" secondAttribute="leading" id="cvL-o8-hVs"/>
+                            <constraint firstItem="Rge-Qb-mgd" firstAttribute="bottom" secondItem="xvO-Tz-Vrh" secondAttribute="bottom" id="fzK-lx-zhj"/>
+                            <constraint firstItem="xvO-Tz-Vrh" firstAttribute="leading" secondItem="Rge-Qb-mgd" secondAttribute="leading" id="kli-cc-Gfz"/>
                             <constraint firstItem="gl1-1J-tca" firstAttribute="top" secondItem="1lx-2Q-2ZN" secondAttribute="bottom" id="qww-Vh-QBr"/>
+                            <constraint firstItem="xvO-Tz-Vrh" firstAttribute="top" secondItem="1lx-2Q-2ZN" secondAttribute="bottom" id="vcd-Bq-sNF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Root View Controller" id="5Wt-Mg-yEb"/>
                     <connections>
+                        <outlet property="loadingView" destination="xvO-Tz-Vrh" id="0xa-LB-EvG"/>
                         <outlet property="repositorySearchBar" destination="1lx-2Q-2ZN" id="iFw-xE-uEq"/>
                         <outlet property="repositoryTableView" destination="gl1-1J-tca" id="KTp-93-mRx"/>
                         <segue destination="Lat-eg-tCb" kind="show" identifier="toDetail" id="2rl-EP-gZw"/>

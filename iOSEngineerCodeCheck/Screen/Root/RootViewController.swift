@@ -14,6 +14,7 @@ class RootViewController: UIViewController {
 
     @IBOutlet weak private var repositorySearchBar: UISearchBar!
     @IBOutlet weak private var repositoryTableView: UITableView!
+    @IBOutlet weak private var loadingView: LodingView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
