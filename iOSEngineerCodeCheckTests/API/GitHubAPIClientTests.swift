@@ -13,11 +13,12 @@ class GitHubAPIClientTests: XCTestCase {
     let gitHubAPIClient = GitHubAPIClient()
     var repositories: [Repository] = []
     let searchWord = "aaa"
+    let page = 1
 
     /// リポジトリを取得する
     func testFetchRepositories() throws {
         let expect = expectation(description: "fetchItems")
-        gitHubAPIClient.fetchRepositories(with: searchWord) { [weak self] items in
+        gitHubAPIClient.fetchRepositories(with: searchWord, with: page) { [weak self] items, _ in
             self?.repositories = items
             expect.fulfill()
         } failureHandler: { _ in
@@ -33,7 +34,7 @@ class GitHubAPIClientTests: XCTestCase {
         // fullfillが呼ばれなければ成功とする
         expect.isInverted = true
 
-        gitHubAPIClient.fetchRepositories(with: searchWord) { [weak self] items in
+        gitHubAPIClient.fetchRepositories(with: searchWord, with: page) { [weak self] items, _ in
             self?.repositories = items
             expect.fulfill()
         } failureHandler: { _ in

@@ -25,4 +25,7 @@ class RootVCMock: RootOutputCollection {
 
     func stopAnimatingIndicator() {
     }
+
+    func setTotalCountLabel(with: String) {
+    }
 }
