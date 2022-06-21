@@ -28,4 +28,7 @@ class RootVCMock: RootOutputCollection {
 
     func setTotalCountLabel(with: String) {
     }
+
+    func showErrorAlert(with statusCode: Int) {
+    }
 }

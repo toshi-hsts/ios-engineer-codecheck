@@ -74,6 +74,7 @@ class RootUITests: XCTestCase {
     }
 
     // 検索キーワードがないときは検索ができないこと
+    // FIXME: テスト通るときと通らないときがある
     func testNotSearchRepository() throws {
         let searchBar = app.searchFields.firstMatch
         // 検索

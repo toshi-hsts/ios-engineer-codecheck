@@ -23,7 +23,7 @@ class GitHubAPIClientTests: XCTestCase {
             self?.repositories = items
             self?.totalCount = totalCount
             expect.fulfill()
-        } failureHandler: { _ in
+        } failureHandler: { _, _ in
         }
 
         wait(for: [expect], timeout: 10)
@@ -41,7 +41,7 @@ class GitHubAPIClientTests: XCTestCase {
             self?.repositories = items
             self?.totalCount = totalCount
             expect.fulfill()
-        } failureHandler: { _ in
+        } failureHandler: { _, _ in
         }
 
         gitHubAPIClient.cancelTask()
