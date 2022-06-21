@@ -43,6 +43,8 @@ class DetailViewController: UIViewController {
         guard let avatarURL = URL(string: presenter.repository.owner.avatarURL)
         else { return }
 
+        // 画像読み込み中はインジケーターを表示する
+        ownerAvatarImageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
         ownerAvatarImageView.sd_setImage(with: avatarURL)
     }
 
