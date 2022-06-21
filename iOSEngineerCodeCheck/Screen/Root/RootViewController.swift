@@ -82,4 +82,18 @@ extension RootViewController: RootOutputCollection {
     func reloadTableView() {
         repositoryTableView.reloadData()
     }
+    /// インジケーターを開始する
+    func startAnimatingIndicator() {
+        loadingView.startAnimatingIndicator()
+        loadingView.isHidden = false
+        view.isUserInteractionEnabled = false
+        navigationController?.navigationBar.isUserInteractionEnabled = false
+    }
+    /// インジケータを停止する
+    func stopAnimatingIndicator() {
+        loadingView.stopAnimatingIndicator()
+        loadingView.isHidden = true
+        view.isUserInteractionEnabled = true
+        navigationController?.navigationBar.isUserInteractionEnabled = true
+    }
 }

@@ -11,4 +11,6 @@ import Foundation
 protocol RootOutputCollection: AnyObject {
     func moveToDeail(with repository: Repository)
     func reloadTableView()
+    func startAnimatingIndicator()
+    func stopAnimatingIndicator()
 }
