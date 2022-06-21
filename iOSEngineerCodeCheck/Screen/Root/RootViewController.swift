@@ -32,10 +32,25 @@ class RootViewController: UIViewController {
     private func setup() {
         totalCountLabel.text = ""
         navigationItem.backButtonTitle = "戻る"
+
+        let resetBarButtonItem = UIBarButtonItem(title: "リセット",
+                                                 style: .done,
+                                                 target: self,
+                                                 action: #selector(tapResetBarButton(_:)))
+
+        navigationItem.rightBarButtonItem = resetBarButtonItem
     }
 
     func inject(_ presenter: RootInputCollection) {
         self.presenter = presenter
+    }
+
+    // 初期画面に戻る
+    @objc func tapResetBarButton(_ sender: UIBarButtonItem) {
+        totalCountLabel.text = ""
+        repositorySearchBar.text = ""
+        noResultView.isHidden = false
+        presenter.reset()
     }
 }
 

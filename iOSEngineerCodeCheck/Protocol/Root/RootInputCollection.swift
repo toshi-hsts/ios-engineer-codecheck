@@ -16,4 +16,5 @@ protocol RootInputCollection: AnyObject {
     func changedSearchText()
     func approachTableViewBottom()
     func reload()
+    func reset()
 }
