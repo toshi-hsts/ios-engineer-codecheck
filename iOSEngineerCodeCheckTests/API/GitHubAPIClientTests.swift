@@ -14,18 +14,21 @@ class GitHubAPIClientTests: XCTestCase {
     var repositories: [Repository] = []
     let searchWord = "aaa"
     let page = 1
+    var totalCount = 0
 
-    /// リポジトリを取得する
+    /// リポジトリと該当件数を取得する
     func testFetchRepositories() throws {
         let expect = expectation(description: "fetchItems")
-        gitHubAPIClient.fetchRepositories(with: searchWord, with: page) { [weak self] items, _ in
+        gitHubAPIClient.fetchRepositories(with: searchWord, with: page) { [weak self] items, totalCount in
             self?.repositories = items
+            self?.totalCount = totalCount
             expect.fulfill()
         } failureHandler: { _ in
         }
 
         wait(for: [expect], timeout: 10)
         XCTAssertTrue(self.repositories.count > 0)
+        XCTAssertTrue(self.totalCount > 0)
     }
 
     /// リポジトリを取得を止める
@@ -34,8 +37,9 @@ class GitHubAPIClientTests: XCTestCase {
         // fullfillが呼ばれなければ成功とする
         expect.isInverted = true
 
-        gitHubAPIClient.fetchRepositories(with: searchWord, with: page) { [weak self] items, _ in
+        gitHubAPIClient.fetchRepositories(with: searchWord, with: page) { [weak self] items, totalCount in
             self?.repositories = items
+            self?.totalCount = totalCount
             expect.fulfill()
         } failureHandler: { _ in
         }
@@ -44,5 +48,6 @@ class GitHubAPIClientTests: XCTestCase {
 
         wait(for: [expect], timeout: 5)
         XCTAssertTrue(self.repositories.isEmpty)
+        XCTAssertTrue(self.totalCount == 0)
     }
 }
