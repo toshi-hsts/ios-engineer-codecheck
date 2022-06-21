@@ -84,7 +84,7 @@ extension RootViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? RepositoryTableViewCell
         let repository = presenter.repositories[indexPath.row]
 
-        cell?.setup(with: repository.fullName, with: repository.language)
+        cell?.setup(title: repository.fullName, language: repository.language, avatarURL: repository.owner.avatarURL)
 
         return cell!
     }
