@@ -23,16 +23,18 @@ class GitHubAPIClient: GitHubAPIClientCollection {
     func fetchRepositories(with searchWord: String,
                            with page: Int,
                            successHandler: @escaping (_ items: [Repository], _ totalCount: Int) -> Void,
-                           failureHandler: @escaping (_ errorDescription: String) -> Void) {
+                           failureHandler: @escaping (_ errorDescription: String, _ statusCode: Int) -> Void) {
         guard let searchRepositoryURL =
                     URL(string: "https://api.github.com/search/repositories?q=\(searchWord)&page=\(page)")
         else { return }
 
         request = AF.request(searchRepositoryURL, method: .get).response { response in
+            guard let statusCode = response.response?.statusCode else { return }
+
             switch response.result {
             case .success(let data):
                 guard let data = data else {
-                    failureHandler("response data is nil.")
+                    failureHandler("response data is nil.", statusCode)
                     return
                 }
 
@@ -40,10 +42,10 @@ class GitHubAPIClient: GitHubAPIClientCollection {
                     let searchResult  = try JSONDecoder().decode(SearchResult.self, from: data)
                     successHandler(searchResult.items, searchResult.totalCount)
                 } catch let error {
-                    failureHandler(error.localizedDescription)
+                    failureHandler(error.localizedDescription, statusCode)
                 }
             case .failure(let error):
-                failureHandler(error.localizedDescription)
+                failureHandler(error.localizedDescription, statusCode)
             }
         }
         request?.resume()

@@ -122,4 +122,20 @@ extension RootViewController: RootOutputCollection {
     func setTotalCountLabel(with totalCount: String) {
         totalCountLabel.text = "該当：\(totalCount)件"
     }
+    /// エラー時のアラートを表示する
+    func showErrorAlert(with statusCode: Int) {
+        var message = ""
+
+        if 500...599 ~= statusCode {
+            message = "メンテナンス中、もしくは障害が発生しています。ご迷惑おかけしますが\nしばらくお待ちください。"
+        } else {
+            message = "通信環境が良い場所で再度お試しください。解決しない場合は〇〇までご連絡お願いします。"
+        }
+
+        let alert = UIAlertController(title: "エラー",
+                                      message: message,
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
 }

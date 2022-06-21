@@ -12,7 +12,7 @@ protocol GitHubAPIClientCollection: AnyObject {
     func fetchRepositories(with searchWord: String,
                            with page: Int,
                            successHandler: @escaping (_ items: [Repository], _ totalCount: Int) -> Void,
-                           failureHandler: @escaping (_ errorDescription: String) -> Void)
+                           failureHandler: @escaping (_ errorDescription: String, _ statusCode: Int) -> Void)
 
     func cancelTask()
 }
