@@ -12,6 +12,8 @@ final class RootPresenter {
     private weak var view: RootOutputCollection!
     private(set) var repositories: [Repository] = []
     private let gitHubAPIClient: GitHubAPIClientCollection!
+    private var searchedWord = ""
+    private var page = 0
 
     init(view: RootOutputCollection, apiClient: GitHubAPIClientCollection) {
         self.view = view
@@ -37,8 +39,10 @@ extension RootPresenter: RootInputCollection {
     ///　検索ボタンが押された際の処理
     func tapSearchButton(with searchWord: String) {
         view.startAnimatingIndicator()
+        searchedWord = searchWord
+        page = 1
 
-        gitHubAPIClient.fetchRepositories(with: searchWord) { [weak self] items in
+        gitHubAPIClient.fetchRepositories(with: searchWord, with: page) { [weak self] items in
             self?.setRepositories(from: items)
             self?.view.reloadTableView()
             self?.view.stopAnimatingIndicator()
