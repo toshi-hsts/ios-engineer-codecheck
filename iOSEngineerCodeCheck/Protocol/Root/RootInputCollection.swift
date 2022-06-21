@@ -14,4 +14,6 @@ protocol RootInputCollection: AnyObject {
     func tapTableViewCell(at index: Int)
     func tapSearchButton(with searchWord: String)
     func changedSearchText()
+    func approachTableViewBottom()
+    func reload()
 }

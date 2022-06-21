@@ -9,9 +9,18 @@
 import Foundation
 
 final class RootPresenter {
+    enum LoadState {
+        case standby
+        case loading
+        case none
+    }
+
     private weak var view: RootOutputCollection!
     private(set) var repositories: [Repository] = []
     private let gitHubAPIClient: GitHubAPIClientCollection!
+    private var loadState: LoadState = .none
+    private var searchedWord = ""
+    private var page = 0
 
     init(view: RootOutputCollection, apiClient: GitHubAPIClientCollection) {
         self.view = view
@@ -36,11 +45,53 @@ extension RootPresenter: RootInputCollection {
     }
     ///　検索ボタンが押された際の処理
     func tapSearchButton(with searchWord: String) {
-        gitHubAPIClient.fetchRepositories(with: searchWord) { [weak self] items in
-            self?.setRepositories(from: items)
+        view.startAnimatingIndicator()
+        loadState = .loading
+        searchedWord = searchWord
+        page = 1
+        repositories = []
+
+        fetchRepositories()
+    }
+
+    /// TableViewが下部に近づいた際の処理
+    func approachTableViewBottom() {
+        guard loadState == .standby else { return }
+
+        view.startAnimatingIndicator()
+        loadState = .loading
+        page += 1
+
+        fetchRepositories()
+    }
+    /// 再読み込み
+    func reload() {
+        // 検索ボタン押下時と同じ処理を試す
+        tapSearchButton(with: searchedWord)
+    }
+
+    /// リポジトリ取得
+    private func fetchRepositories() {
+        gitHubAPIClient.fetchRepositories(with: searchedWord, with: page) { [weak self] items, totalCount in
+            self?.repositories += items
+            self?.loadState = .standby
+            self?.setTotalCount(with: totalCount)
             self?.view.reloadTableView()
-        } failureHandler: { errorDescription in
-            print("errro:", errorDescription)
+            self?.view.stopAnimatingIndicator()
+        } failureHandler: { [weak self] apiError in
+            self?.loadState = .standby
+            self?.view.stopAnimatingIndicator()
+            self?.view.reloadTableView()
+            self?.view.showErrorAlert(with: apiError.aleertMessage)
+            print("error:", apiError.description)
+        }
+    }
+    // 該当件数をセット
+    private func setTotalCount(with totalCount: Int) {
+        // 1ページ目の時だけ該当件数を更新する
+        if page == 1 {
+            let convertedTotalCount = totalCount.addComma()
+            view.setTotalCountLabel(with: convertedTotalCount)
         }
     }
 }

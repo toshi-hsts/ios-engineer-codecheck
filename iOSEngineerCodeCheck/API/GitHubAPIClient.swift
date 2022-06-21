@@ -16,31 +16,51 @@ class GitHubAPIClient: GitHubAPIClientCollection {
     /// リポジトリを取得する
     /// - Parameters:
     ///   - searchWord: リポジトリ検索のキーワード
+    ///   - page: 取得ページ
     ///   - successHandler: リポジトリ取得が成功した場合の処理
     ///   - failureHandler: リポジトリ取得が失敗した場合の処理
     /// - Returns: なし
     func fetchRepositories(with searchWord: String,
-                           successHandler: @escaping (_ items: [Repository]) -> Void,
-                           failureHandler: @escaping (_ errorDescription: String) -> Void) {
-        guard let searchRepositoryURL = URL(string: "https://api.github.com/search/repositories?q=\(searchWord)")
-        else { return }
+                           with page: Int,
+                           successHandler: @escaping (_ items: [Repository], _ totalCount: Int) -> Void,
+                           failureHandler: @escaping (_ apiError: APIError) -> Void) {
+
+        guard let encodedSearchWord = searchWord.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let searchRepositoryURL = URL(string:
+                  "https://api.github.com/search/repositories?q=\(encodedSearchWord)&page=\(page)")
+        else {
+            let apiError = APIError.invalidSearchWord
+            failureHandler(apiError)
+            return
+        }
 
         request = AF.request(searchRepositoryURL, method: .get).response { response in
+            guard let statusCode = response.response?.statusCode else {
+                let apiError = APIError.notStatusCode
+                failureHandler(apiError)
+                return
+            }
+
             switch response.result {
             case .success(let data):
                 guard let data = data else {
-                    failureHandler("response data is nil.")
+                    let apiError = APIError.noResponseData(statusCode: statusCode)
+                    failureHandler(apiError)
                     return
                 }
 
                 do {
                     let searchResult  = try JSONDecoder().decode(SearchResult.self, from: data)
-                    successHandler(searchResult.items)
+                    successHandler(searchResult.items, searchResult.totalCount)
                 } catch let error {
-                    failureHandler(error.localizedDescription)
+                    let apiError = APIError.decodeFailure(statusCode: statusCode,
+                                                          catchedErrorText: error.localizedDescription)
+                    failureHandler(apiError)
                 }
             case .failure(let error):
-                failureHandler(error.localizedDescription)
+                let apiError = APIError.networkFailure(statusCode: statusCode,
+                                                       catchedErrorText: error.localizedDescription)
+                failureHandler(apiError)
             }
         }
         request?.resume()

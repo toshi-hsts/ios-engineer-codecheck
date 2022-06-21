@@ -18,4 +18,17 @@ class RootVCMock: RootOutputCollection {
 
     func reloadTableView() {
     }
+
+    func startAnimatingIndicator() {
+        calledFunctionName = #function
+    }
+
+    func stopAnimatingIndicator() {
+    }
+
+    func setTotalCountLabel(with: String) {
+    }
+
+    func showErrorAlert(with message: String) {
+    }
 }
