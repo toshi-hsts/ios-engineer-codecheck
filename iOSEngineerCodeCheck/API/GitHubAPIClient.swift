@@ -23,25 +23,29 @@ class GitHubAPIClient: GitHubAPIClientCollection {
     func fetchRepositories(with searchWord: String,
                            with page: Int,
                            successHandler: @escaping (_ items: [Repository], _ totalCount: Int) -> Void,
-                           failureHandler: @escaping (_ errorDescription: String, _ statusCode: Int?) -> Void) {
+                           failureHandler: @escaping (_ apiError: APIError) -> Void) {
 
         guard let encodedSearchWord = searchWord.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let searchRepositoryURL = URL(string:
                   "https://api.github.com/search/repositories?q=\(encodedSearchWord)&page=\(page)")
         else {
-            failureHandler("invalid searchWord", nil)
-            return }
+            let apiError = APIError.invalidSearchWord
+            failureHandler(apiError)
+            return
+        }
 
         request = AF.request(searchRepositoryURL, method: .get).response { response in
             guard let statusCode = response.response?.statusCode else {
-                failureHandler("status code is nil", nil)
+                let apiError = APIError.notStatusCode
+                failureHandler(apiError)
                 return
             }
 
             switch response.result {
             case .success(let data):
                 guard let data = data else {
-                    failureHandler("response data is nil.", statusCode)
+                    let apiError = APIError.noResponseData(statusCode: statusCode)
+                    failureHandler(apiError)
                     return
                 }
 
@@ -49,10 +53,14 @@ class GitHubAPIClient: GitHubAPIClientCollection {
                     let searchResult  = try JSONDecoder().decode(SearchResult.self, from: data)
                     successHandler(searchResult.items, searchResult.totalCount)
                 } catch let error {
-                    failureHandler(error.localizedDescription, statusCode)
+                    let apiError = APIError.decodeFailure(statusCode: statusCode,
+                                                          catchedErrorText: error.localizedDescription)
+                    failureHandler(apiError)
                 }
             case .failure(let error):
-                failureHandler(error.localizedDescription, statusCode)
+                let apiError = APIError.networkFailure(statusCode: statusCode,
+                                                       catchedErrorText: error.localizedDescription)
+                failureHandler(apiError)
             }
         }
         request?.resume()

@@ -78,12 +78,12 @@ extension RootPresenter: RootInputCollection {
             self?.setTotalCount(with: totalCount)
             self?.view.reloadTableView()
             self?.view.stopAnimatingIndicator()
-        } failureHandler: { [weak self] errorDescription, statusCode in
+        } failureHandler: { [weak self] apiError in
             self?.loadState = .standby
-            self?.handleStatusCode(with: statusCode)
             self?.view.stopAnimatingIndicator()
             self?.view.reloadTableView()
-            print("errro:", errorDescription)
+            self?.view.showErrorAlert(with: apiError.aleertMessage)
+            print("error:", apiError.description)
         }
     }
     // 該当件数をセット
@@ -93,20 +93,5 @@ extension RootPresenter: RootInputCollection {
             let convertedTotalCount = totalCount.addComma()
             view.setTotalCountLabel(with: convertedTotalCount)
         }
-    }
-
-    private func handleStatusCode(with statusCode: Int?) {
-        let convertedStatusCode: Int = statusCode ?? 0 // nilは0としてハンドリングする
-        let statusCodeCategory = StatusCodeCategory.convert(from: convertedStatusCode)
-        var message = ""
-
-        switch statusCodeCategory {
-        case .serverError:
-            message = "メンテナンス中、もしくは障害が発生しています。ご迷惑おかけしますが\nしばらくお待ちください。"
-        default:
-            message = "通信環境が良い場所で再度お試しください。解決しない場合は〇〇までご連絡お願いします。"
-        }
-
-        view.showErrorAlert(with: message)
     }
 }

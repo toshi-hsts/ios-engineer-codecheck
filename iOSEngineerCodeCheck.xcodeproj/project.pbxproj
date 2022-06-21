@@ -26,6 +26,7 @@
 		CA6443832861C92D00A75FB7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6443822861C92D00A75FB7 /* LoadingView.swift */; };
 		CA644386286204AA00A75FB7 /* Int+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA644385286204AA00A75FB7 /* Int+Utility.swift */; };
 		CA6443882862147600A75FB7 /* StatusCodeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6443872862147600A75FB7 /* StatusCodeCategory.swift */; };
+		CA64438A28621C0B00A75FB7 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA64438928621C0B00A75FB7 /* APIError.swift */; };
 		CA7BDA6B285CB01700BE3A7A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA6A285CB01700BE3A7A /* Router.swift */; };
 		CA7BDA6E285CB1CA00BE3A7A /* RootPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA6D285CB1CA00BE3A7A /* RootPresenter.swift */; };
 		CA7BDA72285CB27200BE3A7A /* RootInputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA71285CB27200BE3A7A /* RootInputCollection.swift */; };
@@ -82,6 +83,7 @@
 		CA6443822861C92D00A75FB7 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CA644385286204AA00A75FB7 /* Int+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Utility.swift"; sourceTree = "<group>"; };
 		CA6443872862147600A75FB7 /* StatusCodeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCodeCategory.swift; sourceTree = "<group>"; };
+		CA64438928621C0B00A75FB7 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		CA7BDA6A285CB01700BE3A7A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CA7BDA6D285CB1CA00BE3A7A /* RootPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresenter.swift; sourceTree = "<group>"; };
 		CA7BDA71285CB27200BE3A7A /* RootInputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInputCollection.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			children = (
 				CA5F3FED28571AA20095E92F /* GitHubAPIClient.swift */,
 				CA6443872862147600A75FB7 /* StatusCodeCategory.swift */,
+				CA64438928621C0B00A75FB7 /* APIError.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				CA16B55A285A1430006421C5 /* Repository.swift in Sources */,
 				CA644386286204AA00A75FB7 /* Int+Utility.swift in Sources */,
 				CA16B55C285A1448006421C5 /* Owner.swift in Sources */,
+				CA64438A28621C0B00A75FB7 /* APIError.swift in Sources */,
 				CA7BDA6E285CB1CA00BE3A7A /* RootPresenter.swift in Sources */,
 				CA7BDA7B285CD56F00BE3A7A /* DetailPresenter.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* DetailViewController.swift in Sources */,

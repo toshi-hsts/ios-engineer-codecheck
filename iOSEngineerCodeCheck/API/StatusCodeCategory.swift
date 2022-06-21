@@ -26,4 +26,13 @@ enum StatusCodeCategory {
             return .other
         }
     }
+
+    var alertMessage: String? {
+        switch self {
+        case .serverError:
+            return "メンテナンス中、もしくは障害が発生しています。ご迷惑おかけしますが\nしばらくお待ちください。"
+        default:
+            return nil
+        }
+    }
 }
