@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class RepositoryTableViewCell: UITableViewCell {
     @IBOutlet weak private var titleLabel: UILabel!
@@ -19,13 +18,6 @@ class RepositoryTableViewCell: UITableViewCell {
 
         titleLabel.text = title
         languageLabel.text = language
-
-        // 画像読み込み中はインジケーターを表示する
-        avatarImageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
-        // 画像をセットする
-        avatarImageView.sd_setImage(with: url) { ( _, error, _, _) in
-            guard error != nil else { return }
-            self.avatarImageView.image = UIImage(named: "loadingError")
-        }
+        avatarImageView.setImage(with: url)
     }
 }

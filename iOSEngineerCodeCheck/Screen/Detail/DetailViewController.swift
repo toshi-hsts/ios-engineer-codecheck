@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class DetailViewController: UIViewController {
     private var presenter: DetailInputCollection!
@@ -42,14 +41,7 @@ class DetailViewController: UIViewController {
     /// アバター画像をセットする
     private func setOwnerAvatarImage() {
         let avatarURL = URL(string: presenter.repository.owner.avatarURL)
-
-        // 画像読み込み中はインジケーターを表示する
-        ownerAvatarImageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
-        // 画像をセットする
-        ownerAvatarImageView.sd_setImage(with: avatarURL) { ( _, error, _, _) in
-            guard error != nil else { return }
-            self.ownerAvatarImageView.image = UIImage(named: "loadingError")
-        }
+        ownerAvatarImageView.setImage(with: avatarURL)
     }
 
     func inject(presenter: DetailInputCollection) {

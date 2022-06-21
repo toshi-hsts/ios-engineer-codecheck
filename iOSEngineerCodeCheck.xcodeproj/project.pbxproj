@@ -30,6 +30,7 @@
 		CA64438D2862427400A75FB7 /* NoResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA64438C2862427400A75FB7 /* NoResultView.xib */; };
 		CA64438F2862428D00A75FB7 /* NoResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA64438E2862428D00A75FB7 /* NoResultView.swift */; };
 		CA6443912862461500A75FB7 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6443902862461500A75FB7 /* RepositoryTableViewCell.swift */; };
+		CA644393286279DE00A75FB7 /* UIImageView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA644392286279DE00A75FB7 /* UIImageView+Utility.swift */; };
 		CA7BDA6B285CB01700BE3A7A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA6A285CB01700BE3A7A /* Router.swift */; };
 		CA7BDA6E285CB1CA00BE3A7A /* RootPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA6D285CB1CA00BE3A7A /* RootPresenter.swift */; };
 		CA7BDA72285CB27200BE3A7A /* RootInputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BDA71285CB27200BE3A7A /* RootInputCollection.swift */; };
@@ -90,6 +91,7 @@
 		CA64438C2862427400A75FB7 /* NoResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoResultView.xib; sourceTree = "<group>"; };
 		CA64438E2862428D00A75FB7 /* NoResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultView.swift; sourceTree = "<group>"; };
 		CA6443902862461500A75FB7 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
+		CA644392286279DE00A75FB7 /* UIImageView+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utility.swift"; sourceTree = "<group>"; };
 		CA7BDA6A285CB01700BE3A7A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CA7BDA6D285CB1CA00BE3A7A /* RootPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresenter.swift; sourceTree = "<group>"; };
 		CA7BDA71285CB27200BE3A7A /* RootInputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInputCollection.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				CA644385286204AA00A75FB7 /* Int+Utility.swift */,
+				CA644392286279DE00A75FB7 /* UIImageView+Utility.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				CA7BDA6B285CB01700BE3A7A /* Router.swift in Sources */,
 				CA6443882862147600A75FB7 /* StatusCodeCategory.swift in Sources */,
 				BFD945E3244DC5E80012785A /* RootViewController.swift in Sources */,
+				CA644393286279DE00A75FB7 /* UIImageView+Utility.swift in Sources */,
 				CA16B55A285A1430006421C5 /* Repository.swift in Sources */,
 				CA644386286204AA00A75FB7 /* Int+Utility.swift in Sources */,
 				CA16B55C285A1448006421C5 /* Owner.swift in Sources */,
