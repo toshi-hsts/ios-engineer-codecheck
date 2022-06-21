@@ -8,10 +8,12 @@
 
 import UIKit
 
-class RootViewController: UITableViewController {
-    @IBOutlet weak private var repositorySearchBar: UISearchBar!
+class RootViewController: UIViewController {
 
     private var presenter: RootInputCollection!
+
+    @IBOutlet weak private var repositorySearchBar: UISearchBar!
+    @IBOutlet weak private var repositoryTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,6 @@ class RootViewController: UITableViewController {
 
     private func setup() {
         repositorySearchBar.text = "GitHubのリポジトリを検索できるよー"
-        repositorySearchBar.delegate = self
     }
 
     func inject(_ presenter: RootInputCollection) {
@@ -52,19 +53,19 @@ extension RootViewController: UISearchBarDelegate {
 }
 
 // MARK: - UITableViewDataSource
-extension RootViewController {
+extension RootViewController: UITableViewDataSource {
     // テーブルの1セクションあたりのセル数
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.repositories.count
     }
 
     // セル設定
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let repository = presenter.repositories[indexPath.row]
 
         cell.textLabel?.text = repository.fullName
-        cell.detailTextLabel?.text = repository.language
+//        cell.detailTextLabel?.text = repository.language
         cell.tag = indexPath.row
 
         return cell
@@ -72,9 +73,9 @@ extension RootViewController {
 }
 
 // MARK: - UITableViewDelegate
-extension RootViewController {
+extension RootViewController: UITableViewDelegate {
     // セルタップ時に呼ばれる
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.tapTableViewCell(at: indexPath.row)
     }
 }
@@ -89,6 +90,6 @@ extension RootViewController: RootOutputCollection {
     }
     ///  テーブルビューを更新する
     func reloadTableView() {
-        tableView.reloadData()
+        repositoryTableView.reloadData()
     }
 }
