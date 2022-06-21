@@ -15,7 +15,7 @@ class RootViewController: UIViewController {
     @IBOutlet weak private var repositorySearchBar: UISearchBar!
     @IBOutlet weak private var repositoryTableView: UITableView!
     @IBOutlet weak private var loadingView: LodingView!
-    @IBOutlet weak private var noResultView: UIView!
+    @IBOutlet weak private var noResultView: NoResultView!
     @IBOutlet weak private var totalCountLabel: UILabel!
 
     override func viewDidLoad() {
