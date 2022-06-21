@@ -24,8 +24,10 @@ class GitHubAPIClient: GitHubAPIClientCollection {
                            with page: Int,
                            successHandler: @escaping (_ items: [Repository], _ totalCount: Int) -> Void,
                            failureHandler: @escaping (_ errorDescription: String, _ statusCode: Int?) -> Void) {
-        guard let searchRepositoryURL =
-                    URL(string: "https://api.github.com/search/repositories?q=\(searchWord)&page=\(page)")
+
+        guard let encodedSearchWord = searchWord.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let searchRepositoryURL = URL(string:
+                  "https://api.github.com/search/repositories?q=\(encodedSearchWord)&page=\(page)")
         else { return }
 
         request = AF.request(searchRepositoryURL, method: .get).response { response in
