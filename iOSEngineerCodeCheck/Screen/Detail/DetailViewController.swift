@@ -56,6 +56,13 @@ class DetailViewController: UIViewController {
     func inject(presenter: DetailInputCollection) {
         self.presenter = presenter
     }
+
+    @IBAction func tapShowMore(_ sender: Any) {
+        guard let url = URL(string: presenter.repository.htmlURL) else { return }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+    }
 }
 
 // MARK: - DetailPresenterOutputCollection

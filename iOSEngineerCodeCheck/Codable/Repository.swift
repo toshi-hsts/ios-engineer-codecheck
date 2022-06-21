@@ -15,6 +15,7 @@ struct Repository: Codable {
     let watchersCount: Int
     let forksCount: Int
     let openIssuesCount: Int
+    let htmlURL: String
     let description: String? // nilが返却される可能性があるためオプショナルとする(cf. https://docs.github.com/ja/rest/search)
     let owner: Owner
 
@@ -30,6 +31,7 @@ struct Repository: Codable {
         case watchersCount = "watchers_count"
         case forksCount = "forks_count"
         case openIssuesCount = "open_issues_count"
+        case htmlURL = "html_url"
         case description
         case owner
     }

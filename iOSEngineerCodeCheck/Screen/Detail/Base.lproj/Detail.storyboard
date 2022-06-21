@@ -80,6 +80,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ou-Nv-mvK">
+                                <rect key="frame" x="20" y="807" width="374" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" 詳しく見てみる"/>
+                                <connections>
+                                    <action selector="tapShowMore:" destination="52m-KZ-s0h" eventType="touchUpInside" id="DIG-lv-Uuw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yyz-Kx-jDa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -87,12 +95,15 @@
                             <constraint firstItem="Jrx-qh-LXJ" firstAttribute="centerX" secondItem="Zw7-U1-C7q" secondAttribute="centerX" id="4R2-iN-V7y"/>
                             <constraint firstItem="VbP-CO-Zs9" firstAttribute="top" secondItem="Jrx-qh-LXJ" secondAttribute="bottom" constant="22.5" id="Cdk-dg-0Yx"/>
                             <constraint firstItem="yyz-Kx-jDa" firstAttribute="trailing" secondItem="UoX-7w-CCN" secondAttribute="trailing" constant="20" id="F9K-dh-b10"/>
+                            <constraint firstItem="4Ou-Nv-mvK" firstAttribute="top" secondItem="UoX-7w-CCN" secondAttribute="bottom" constant="32.5" id="IHm-ec-aGE"/>
                             <constraint firstItem="VbP-CO-Zs9" firstAttribute="centerX" secondItem="Jrx-qh-LXJ" secondAttribute="centerX" id="P62-Q8-cPh"/>
                             <constraint firstItem="Zw7-U1-C7q" firstAttribute="centerY" secondItem="yyz-Kx-jDa" secondAttribute="centerY" multiplier="0.7" id="Sv3-TR-mS8"/>
                             <constraint firstItem="UoX-7w-CCN" firstAttribute="top" secondItem="VbP-CO-Zs9" secondAttribute="bottom" constant="63.5" id="YTQ-93-CtC"/>
                             <constraint firstItem="Zw7-U1-C7q" firstAttribute="leading" secondItem="yyz-Kx-jDa" secondAttribute="leading" constant="20" id="aB5-fC-3wW"/>
                             <constraint firstItem="VbP-CO-Zs9" firstAttribute="width" secondItem="Zw7-U1-C7q" secondAttribute="width" id="elT-pd-HSn"/>
                             <constraint firstItem="Jrx-qh-LXJ" firstAttribute="top" secondItem="Zw7-U1-C7q" secondAttribute="bottom" constant="28" id="fnw-WJ-1Sd"/>
+                            <constraint firstItem="4Ou-Nv-mvK" firstAttribute="leading" secondItem="yyz-Kx-jDa" secondAttribute="leading" constant="20" id="iGv-Rm-Iah"/>
+                            <constraint firstItem="yyz-Kx-jDa" firstAttribute="trailing" secondItem="4Ou-Nv-mvK" secondAttribute="trailing" constant="20" id="lFb-DH-ZI9"/>
                             <constraint firstItem="Jrx-qh-LXJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yyz-Kx-jDa" secondAttribute="leading" constant="20" id="ljK-i6-IIK"/>
                             <constraint firstItem="yyz-Kx-jDa" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Jrx-qh-LXJ" secondAttribute="trailing" constant="20" id="lqm-9G-Stf"/>
                             <constraint firstItem="yyz-Kx-jDa" firstAttribute="trailing" secondItem="Zw7-U1-C7q" secondAttribute="trailing" constant="20" id="qU5-Cb-YPb"/>
