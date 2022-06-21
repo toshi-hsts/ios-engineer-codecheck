@@ -50,7 +50,7 @@ class DetailUITests: XCTestCase {
 
     // Root画面に遷移できること
     func testBackRootScreen() throws {
-        let rootScreenTitle = "Root View Controller"
+        let rootScreenTitle = "GitHubリポジトリ検索くん"
         app.buttons[rootScreenTitle].tap()
         XCTAssertTrue(app.navigationBars[rootScreenTitle].exists)
     }

@@ -18,7 +18,7 @@
             </objects>
             <point key="canvasLocation" x="1089.8550724637682" y="136.60714285714286"/>
         </scene>
-        <!--Root View Controller-->
+        <!--GitHubリポジトリ検索くん-->
         <scene sceneID="gg0-p2-FXD">
             <objects>
                 <viewController storyboardIdentifier="rootVC" id="Gkn-qx-lgv" customClass="RootViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,7 +81,7 @@
                             <constraint firstItem="gl1-1J-tca" firstAttribute="bottom" secondItem="Rge-Qb-mgd" secondAttribute="bottom" id="yqW-XE-Zbt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="5Wt-Mg-yEb"/>
+                    <navigationItem key="navigationItem" title="GitHubリポジトリ検索くん" id="5Wt-Mg-yEb"/>
                     <connections>
                         <outlet property="loadingView" destination="xvO-Tz-Vrh" id="0xa-LB-EvG"/>
                         <outlet property="repositorySearchBar" destination="1lx-2Q-2ZN" id="iFw-xE-uEq"/>

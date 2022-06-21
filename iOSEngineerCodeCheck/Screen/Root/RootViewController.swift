@@ -30,6 +30,7 @@ class RootViewController: UIViewController {
 
     private func setup() {
         totalCountLabel.text = ""
+        navigationItem.backButtonTitle = "戻る"
     }
 
     func inject(_ presenter: RootInputCollection) {

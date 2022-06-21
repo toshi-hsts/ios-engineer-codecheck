@@ -92,7 +92,7 @@ class RootUITests: XCTestCase {
         let firstCell = app.cells.element(boundBy: 0)
         firstCell.tap()
         //　詳細画面表示されているか確認
-        let rootScreenTitle = "Root View Controller"
+        let rootScreenTitle = "GitHubリポジトリ検索くん"
         XCTAssertTrue(app.buttons[rootScreenTitle].exists)
     }
 
