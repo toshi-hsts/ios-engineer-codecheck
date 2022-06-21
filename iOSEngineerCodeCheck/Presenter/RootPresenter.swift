@@ -67,11 +67,12 @@ extension RootPresenter: RootInputCollection {
 
     /// リポジトリ取得
     private func fetchRepositories() {
-        gitHubAPIClient.fetchRepositories(with: searchedWord, with: page) { [weak self] items in
+        gitHubAPIClient.fetchRepositories(with: searchedWord, with: page) { [weak self] items, totalCount in
             self?.repositories += items
             self?.loadState = .standby
             self?.view.reloadTableView()
             self?.view.stopAnimatingIndicator()
+            self?.view.setTotalCountLabel(with: totalCount)
         } failureHandler: { [weak self] errorDescription in
             self?.view.stopAnimatingIndicator()
             self?.loadState = .standby

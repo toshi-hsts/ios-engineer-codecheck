@@ -22,7 +22,7 @@ class GitHubAPIClient: GitHubAPIClientCollection {
     /// - Returns: なし
     func fetchRepositories(with searchWord: String,
                            with page: Int,
-                           successHandler: @escaping (_ items: [Repository]) -> Void,
+                           successHandler: @escaping (_ items: [Repository], _ totalCount: Int) -> Void,
                            failureHandler: @escaping (_ errorDescription: String) -> Void) {
         guard let searchRepositoryURL =
                     URL(string: "https://api.github.com/search/repositories?q=\(searchWord)&page=\(page)")
@@ -38,7 +38,7 @@ class GitHubAPIClient: GitHubAPIClientCollection {
 
                 do {
                     let searchResult  = try JSONDecoder().decode(SearchResult.self, from: data)
-                    successHandler(searchResult.items)
+                    successHandler(searchResult.items, searchResult.totalCount)
                 } catch let error {
                     failureHandler(error.localizedDescription)
                 }

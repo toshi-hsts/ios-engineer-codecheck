@@ -13,4 +13,5 @@ protocol RootOutputCollection: AnyObject {
     func reloadTableView()
     func startAnimatingIndicator()
     func stopAnimatingIndicator()
+    func setTotalCountLabel(with: Int)
 }
