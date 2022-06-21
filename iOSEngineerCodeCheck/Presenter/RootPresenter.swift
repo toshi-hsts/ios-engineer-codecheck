@@ -9,9 +9,16 @@
 import Foundation
 
 final class RootPresenter {
+    enum LoadState {
+        case standby
+        case loading
+        case none
+    }
+
     private weak var view: RootOutputCollection!
     private(set) var repositories: [Repository] = []
     private let gitHubAPIClient: GitHubAPIClientCollection!
+    private var loadState: LoadState = .none
     private var searchedWord = ""
     private var page = 0
 
@@ -39,15 +46,35 @@ extension RootPresenter: RootInputCollection {
     ///　検索ボタンが押された際の処理
     func tapSearchButton(with searchWord: String) {
         view.startAnimatingIndicator()
+        loadState = .loading
         searchedWord = searchWord
         page = 1
+        repositories = []
 
-        gitHubAPIClient.fetchRepositories(with: searchWord, with: page) { [weak self] items in
+        fetchRepositories()
+    }
+
+    /// TableViewが下部に近づいた際の処理
+    func approachTableViewBottom() {
+        guard loadState == .standby else { return }
+
+        view.startAnimatingIndicator()
+        loadState = .loading
+        page += 1
+
+        fetchRepositories()
+    }
+
+    /// リポジトリ取得
+    private func fetchRepositories() {
+        gitHubAPIClient.fetchRepositories(with: searchedWord, with: page) { [weak self] items in
             self?.setRepositories(from: items)
+            self?.loadState = .standby
             self?.view.reloadTableView()
             self?.view.stopAnimatingIndicator()
         } failureHandler: { [weak self] errorDescription in
             self?.view.stopAnimatingIndicator()
+            self?.loadState = .standby
             print("errro:", errorDescription)
         }
     }
