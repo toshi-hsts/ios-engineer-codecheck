@@ -70,13 +70,21 @@ extension RootPresenter: RootInputCollection {
         gitHubAPIClient.fetchRepositories(with: searchedWord, with: page) { [weak self] items, totalCount in
             self?.repositories += items
             self?.loadState = .standby
+            self?.setTotalCount(with: totalCount)
             self?.view.reloadTableView()
             self?.view.stopAnimatingIndicator()
-            self?.view.setTotalCountLabel(with: totalCount)
         } failureHandler: { [weak self] errorDescription in
             self?.view.stopAnimatingIndicator()
             self?.loadState = .standby
             print("errro:", errorDescription)
+        }
+    }
+    // 該当件数をセット
+    private func setTotalCount(with totalCount: Int) {
+        // 1ページ目の時だけ該当件数を更新する
+        if page == 1 {
+            let convertedTotalCount = totalCount.addComma()
+            view.setTotalCountLabel(with: convertedTotalCount)
         }
     }
 }

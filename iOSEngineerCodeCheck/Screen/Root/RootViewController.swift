@@ -119,7 +119,7 @@ extension RootViewController: RootOutputCollection {
         navigationController?.navigationBar.isUserInteractionEnabled = true
     }
     /// 該当件数をセットする
-    func setTotalCountLabel(with totalCount: Int) {
+    func setTotalCountLabel(with totalCount: String) {
         totalCountLabel.text = "該当：\(totalCount)件"
     }
 }
