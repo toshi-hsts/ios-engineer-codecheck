@@ -19,6 +19,11 @@ class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+
+    private func setup() {
+        totalCountLabel.text = ""
     }
 
     func inject(_ presenter: RootInputCollection) {

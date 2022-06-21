@@ -34,7 +34,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gl1-1J-tca">
-                                <rect key="frame" x="0.0" y="139" width="414" height="723"/>
+                                <rect key="frame" x="0.0" y="160" width="414" height="702"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="CA9-st-7Bq">
@@ -52,11 +52,10 @@
                                 </connections>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvO-Tz-Vrh" customClass="LodingView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="139" width="414" height="723"/>
+                                <rect key="frame" x="0.0" y="160" width="414" height="702"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75W-h3-a2X">
-                                <rect key="frame" x="147" y="437" width="116" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="該当件数" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75W-h3-a2X">
+                                <rect key="frame" x="20" y="139" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -66,16 +65,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="1lx-2Q-2ZN" firstAttribute="top" secondItem="Rge-Qb-mgd" secondAttribute="top" id="015-Os-uWh"/>
+                            <constraint firstItem="xvO-Tz-Vrh" firstAttribute="bottom" secondItem="Rge-Qb-mgd" secondAttribute="bottom" id="0Nq-B3-RiQ"/>
+                            <constraint firstItem="xvO-Tz-Vrh" firstAttribute="trailing" secondItem="Rge-Qb-mgd" secondAttribute="trailing" id="47V-iz-DT0"/>
                             <constraint firstItem="1lx-2Q-2ZN" firstAttribute="trailing" secondItem="Rge-Qb-mgd" secondAttribute="trailing" id="5Qg-fC-HuX"/>
-                            <constraint firstItem="Rge-Qb-mgd" firstAttribute="trailing" secondItem="gl1-1J-tca" secondAttribute="trailing" id="Arb-EP-MiO"/>
-                            <constraint firstItem="Rge-Qb-mgd" firstAttribute="trailing" secondItem="xvO-Tz-Vrh" secondAttribute="trailing" id="IW0-6p-OZ6"/>
+                            <constraint firstItem="gl1-1J-tca" firstAttribute="top" secondItem="75W-h3-a2X" secondAttribute="bottom" id="L2F-bT-cC1"/>
                             <constraint firstItem="1lx-2Q-2ZN" firstAttribute="leading" secondItem="Rge-Qb-mgd" secondAttribute="leading" id="TPp-U4-TUs"/>
-                            <constraint firstItem="Rge-Qb-mgd" firstAttribute="bottom" secondItem="gl1-1J-tca" secondAttribute="bottom" id="WJ5-HK-kHl"/>
-                            <constraint firstItem="gl1-1J-tca" firstAttribute="leading" secondItem="Rge-Qb-mgd" secondAttribute="leading" id="cvL-o8-hVs"/>
-                            <constraint firstItem="Rge-Qb-mgd" firstAttribute="bottom" secondItem="xvO-Tz-Vrh" secondAttribute="bottom" id="fzK-lx-zhj"/>
-                            <constraint firstItem="xvO-Tz-Vrh" firstAttribute="leading" secondItem="Rge-Qb-mgd" secondAttribute="leading" id="kli-cc-Gfz"/>
-                            <constraint firstItem="gl1-1J-tca" firstAttribute="top" secondItem="1lx-2Q-2ZN" secondAttribute="bottom" id="qww-Vh-QBr"/>
-                            <constraint firstItem="xvO-Tz-Vrh" firstAttribute="top" secondItem="1lx-2Q-2ZN" secondAttribute="bottom" id="vcd-Bq-sNF"/>
+                            <constraint firstItem="Rge-Qb-mgd" firstAttribute="trailing" secondItem="75W-h3-a2X" secondAttribute="trailing" constant="20" id="bsg-o4-2M7"/>
+                            <constraint firstItem="gl1-1J-tca" firstAttribute="trailing" secondItem="Rge-Qb-mgd" secondAttribute="trailing" id="cbY-39-FMe"/>
+                            <constraint firstItem="gl1-1J-tca" firstAttribute="top" secondItem="75W-h3-a2X" secondAttribute="bottom" id="cmQ-vc-xqC"/>
+                            <constraint firstItem="75W-h3-a2X" firstAttribute="top" secondItem="1lx-2Q-2ZN" secondAttribute="bottom" id="dpV-a7-dI8"/>
+                            <constraint firstItem="xvO-Tz-Vrh" firstAttribute="leading" secondItem="Rge-Qb-mgd" secondAttribute="leading" id="fTE-Ue-sr1"/>
+                            <constraint firstItem="xvO-Tz-Vrh" firstAttribute="top" secondItem="75W-h3-a2X" secondAttribute="bottom" id="hEq-lj-l29"/>
+                            <constraint firstItem="gl1-1J-tca" firstAttribute="leading" secondItem="Rge-Qb-mgd" secondAttribute="leading" id="hwP-3I-Fqu"/>
+                            <constraint firstItem="75W-h3-a2X" firstAttribute="leading" secondItem="Rge-Qb-mgd" secondAttribute="leading" constant="20" id="riU-mz-7um"/>
+                            <constraint firstItem="gl1-1J-tca" firstAttribute="bottom" secondItem="Rge-Qb-mgd" secondAttribute="bottom" id="yqW-XE-Zbt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Root View Controller" id="5Wt-Mg-yEb"/>
