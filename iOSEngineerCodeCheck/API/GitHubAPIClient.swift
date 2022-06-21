@@ -28,7 +28,9 @@ class GitHubAPIClient: GitHubAPIClientCollection {
         guard let encodedSearchWord = searchWord.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let searchRepositoryURL = URL(string:
                   "https://api.github.com/search/repositories?q=\(encodedSearchWord)&page=\(page)")
-        else { return }
+        else {
+            failureHandler("invalid searchWord", nil)
+            return }
 
         request = AF.request(searchRepositoryURL, method: .get).response { response in
             guard let statusCode = response.response?.statusCode else {
