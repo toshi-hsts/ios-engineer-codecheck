@@ -152,12 +152,12 @@
                     <navigationItem key="navigationItem" id="f1m-Ei-MWd"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="JTm-Q7-ge8" id="yn1-bU-0uh"/>
-                        <outlet property="forksLabel" destination="ALZ-1q-OjP" id="cih-1m-aEa"/>
-                        <outlet property="issuesLabel" destination="vyG-T4-5bL" id="g5Y-GK-soY"/>
+                        <outlet property="forksNumberLabel" destination="ALZ-1q-OjP" id="Mw5-ik-d19"/>
+                        <outlet property="issuesNumberLabel" destination="vyG-T4-5bL" id="dGZ-Tu-V11"/>
                         <outlet property="languageLabel" destination="lKb-sd-BYw" id="mdi-Bg-hj0"/>
                         <outlet property="ownerAvatarImageView" destination="Zw7-U1-C7q" id="Prd-9g-1NR"/>
-                        <outlet property="starsLabel" destination="ngo-ck-joO" id="iJq-ZZ-lJc"/>
-                        <outlet property="watchersLabel" destination="yOA-iI-QQx" id="gh6-4V-6pn"/>
+                        <outlet property="starsNumberLabel" destination="ngo-ck-joO" id="r2V-if-2RW"/>
+                        <outlet property="watchersNumberLabel" destination="yOA-iI-QQx" id="d5c-93-oBi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBl-2Q-eqX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

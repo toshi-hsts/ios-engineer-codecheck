@@ -13,10 +13,10 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak private var ownerAvatarImageView: UIImageView!
     @IBOutlet weak private var languageLabel: UILabel!
-    @IBOutlet weak private var starsLabel: UILabel!
-    @IBOutlet weak private var watchersLabel: UILabel!
-    @IBOutlet weak private var forksLabel: UILabel!
-    @IBOutlet weak private var issuesLabel: UILabel!
+    @IBOutlet weak private var starsNumberLabel: UILabel!
+    @IBOutlet weak private var watchersNumberLabel: UILabel!
+    @IBOutlet weak private var forksNumberLabel: UILabel!
+    @IBOutlet weak private var issuesNumberLabel: UILabel!
     @IBOutlet weak private var descriptionLabel: UILabel!
 
     override func viewDidLoad() {
@@ -29,10 +29,10 @@ class DetailViewController: UIViewController {
         navigationItem.title = repository.fullName
 
         languageLabel.text = "written in \(repository.language)"
-        starsLabel.text = String(repository.stargazersCount.addComma())
-        watchersLabel.text = String(repository.watchersCount.addComma())
-        forksLabel.text = String(repository.forksCount.addComma())
-        issuesLabel.text = String(repository.openIssuesCount.addComma())
+        starsNumberLabel.text = String(repository.stargazersCount.addComma())
+        watchersNumberLabel.text = String(repository.watchersCount.addComma())
+        forksNumberLabel.text = String(repository.forksCount.addComma())
+        issuesNumberLabel.text = String(repository.openIssuesCount.addComma())
         descriptionLabel.text = repository.description
 
         setOwnerAvatarImage()
@@ -51,7 +51,7 @@ class DetailViewController: UIViewController {
     @IBAction func tapShowMore(_ sender: Any) {
         guard let url = URL(string: presenter.repository.htmlURL) else { return }
         if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
 }
