@@ -112,6 +112,7 @@ extension RootViewController: UITableViewDataSource {
 extension RootViewController: UITableViewDelegate {
     // セルタップ時に呼ばれる
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         presenter.tapTableViewCell(at: indexPath.row)
     }
 }
