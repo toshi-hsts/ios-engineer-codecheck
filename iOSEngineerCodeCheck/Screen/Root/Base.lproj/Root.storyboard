@@ -111,6 +111,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJU-0f-V6V" customClass="NoResultView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="158" width="414" height="738"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <accessibility key="accessibilityConfiguration" identifier="noResultView"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvO-Tz-Vrh" customClass="LodingView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>

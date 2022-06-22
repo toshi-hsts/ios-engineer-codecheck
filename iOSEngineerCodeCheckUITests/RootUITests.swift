@@ -41,6 +41,10 @@ class RootUITests: XCTestCase {
             let firstCell = app.cells.element(boundBy: 0)
             XCTAssertFalse(firstCell.exists)
         }
+
+        XCTContext.runActivity(named: "noResultViewが表示されていること") { _ in
+            XCTAssertTrue(app.otherElements["noResultView"].exists)
+        }
     }
 
     // ロード画面が表示されること
@@ -74,7 +78,7 @@ class RootUITests: XCTestCase {
     }
 
     // 検索キーワードがないときは検索ができないこと
-    // FIXME: テスト通るときと通らないときがある
+    // テスト通らないときはシミュレータのキーボードを出して（cmd + k）リトライすること！
     func testNotSearchRepository() throws {
         let searchBar = app.searchFields.firstMatch
         // 検索
@@ -92,8 +96,17 @@ class RootUITests: XCTestCase {
         let firstCell = app.cells.element(boundBy: 0)
         firstCell.tap()
         //　詳細画面表示されているか確認
-        let rootScreenTitle = "GitHubリポジトリ検索くん"
+        let rootScreenTitle = "戻る"
         XCTAssertTrue(app.buttons[rootScreenTitle].exists)
+    }
+
+    // リセットできること
+    func testReset() throws {
+        // 検索
+        searchRepository()
+        // リセットを押すと初期画面に遷移することを確認
+        app.buttons["リセット"].tap()
+        XCTAssertTrue(app.otherElements["noResultView"].exists)
     }
 
     // 検索
