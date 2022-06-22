@@ -28,17 +28,15 @@ class DetailUITests: XCTestCase {
     // 初期画面が表示されていること
     func testInitialScreen() throws {
         let avaterImage = app.images.firstMatch
-        let title = app.staticTexts["title"]
         let language = app.staticTexts["language"]
         let stars = app.staticTexts["stars"]
         let watchers = app.staticTexts["watchers"]
         let forks = app.staticTexts["forks"]
-        let issues = app.staticTexts["issues"]
+        let issues = app.staticTexts["open issues"]
         let description = app.staticTexts["description"]
         let showMoreButton = app.buttons["showMoreButton"]
 
         XCTAssertTrue(avaterImage.exists)
-        XCTAssertTrue(title.exists)
         XCTAssertTrue(language.exists)
         XCTAssertTrue(stars.exists)
         XCTAssertTrue(watchers.exists)
@@ -50,8 +48,8 @@ class DetailUITests: XCTestCase {
 
     // Root画面に遷移できること
     func testBackRootScreen() throws {
-        let rootScreenTitle = "Root View Controller"
-        app.buttons[rootScreenTitle].tap()
+        let rootScreenTitle = "GitHubリポジトリ検索くん"
+        app.buttons["戻る"].tap()
         XCTAssertTrue(app.navigationBars[rootScreenTitle].exists)
     }
 

@@ -69,6 +69,13 @@ extension RootPresenter: RootInputCollection {
         // 検索ボタン押下時と同じ処理を試す
         tapSearchButton(with: searchedWord)
     }
+    /// 状態をリセットする
+    func reset() {
+        repositories = []
+        page = 0
+        loadState = .none
+        searchedWord = ""
+    }
 
     /// リポジトリ取得
     private func fetchRepositories() {

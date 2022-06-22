@@ -7,18 +7,16 @@
 //
 
 import UIKit
-import SDWebImage
 
 class DetailViewController: UIViewController {
     private var presenter: DetailInputCollection!
 
     @IBOutlet weak private var ownerAvatarImageView: UIImageView!
-    @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var languageLabel: UILabel!
-    @IBOutlet weak private var starsLabel: UILabel!
-    @IBOutlet weak private var watchersLabel: UILabel!
-    @IBOutlet weak private var forksLabel: UILabel!
-    @IBOutlet weak private var issuesLabel: UILabel!
+    @IBOutlet weak private var starsNumberLabel: UILabel!
+    @IBOutlet weak private var watchersNumberLabel: UILabel!
+    @IBOutlet weak private var forksNumberLabel: UILabel!
+    @IBOutlet weak private var issuesNumberLabel: UILabel!
     @IBOutlet weak private var descriptionLabel: UILabel!
 
     override func viewDidLoad() {
@@ -28,13 +26,13 @@ class DetailViewController: UIViewController {
 
     private func setup() {
         let repository = presenter.repository
+        navigationItem.title = repository.fullName
 
-        titleLabel.text = repository.fullName
-        languageLabel.text = "Written in \(repository.language)"
-        starsLabel.text = "\(repository.stargazersCount) stars"
-        watchersLabel.text = "\(repository.watchersCount) watchers"
-        forksLabel.text = "\(repository.forksCount) forks"
-        issuesLabel.text = "\(repository.openIssuesCount) open issues"
+        languageLabel.text = "written in \(repository.language)"
+        starsNumberLabel.text = String(repository.stargazersCount.addComma())
+        watchersNumberLabel.text = String(repository.watchersCount.addComma())
+        forksNumberLabel.text = String(repository.forksCount.addComma())
+        issuesNumberLabel.text = String(repository.openIssuesCount.addComma())
         descriptionLabel.text = repository.description
 
         setOwnerAvatarImage()
@@ -43,14 +41,7 @@ class DetailViewController: UIViewController {
     /// アバター画像をセットする
     private func setOwnerAvatarImage() {
         let avatarURL = URL(string: presenter.repository.owner.avatarURL)
-
-        // 画像読み込み中はインジケーターを表示する
-        ownerAvatarImageView.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
-        // 画像をセットする
-        ownerAvatarImageView.sd_setImage(with: avatarURL) { ( _, error, _, _) in
-            guard error != nil else { return }
-            self.ownerAvatarImageView.image = UIImage(named: "loadingError")
-        }
+        ownerAvatarImageView.setImage(with: avatarURL)
     }
 
     func inject(presenter: DetailInputCollection) {
@@ -60,7 +51,7 @@ class DetailViewController: UIViewController {
     @IBAction func tapShowMore(_ sender: Any) {
         guard let url = URL(string: presenter.repository.htmlURL) else { return }
         if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
 }

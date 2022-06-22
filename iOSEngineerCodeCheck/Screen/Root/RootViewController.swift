@@ -15,7 +15,8 @@ class RootViewController: UIViewController {
     @IBOutlet weak private var repositorySearchBar: UISearchBar!
     @IBOutlet weak private var repositoryTableView: UITableView!
     @IBOutlet weak private var loadingView: LodingView!
-    @IBOutlet weak var totalCountLabel: UILabel!
+    @IBOutlet weak private var noResultView: NoResultView!
+    @IBOutlet weak private var totalCountLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +31,44 @@ class RootViewController: UIViewController {
 
     private func setup() {
         totalCountLabel.text = ""
+        navigationItem.backButtonTitle = "戻る"
+
+        // ナビゲーションにリセットボタンをつける
+        let resetBarButtonItem = UIBarButtonItem(title: "リセット",
+                                                 style: .done,
+                                                 target: self,
+                                                 action: #selector(tapResetBarButton(_:)))
+        navigationItem.rightBarButtonItem = resetBarButtonItem
+
+        // キーボードに閉じるボタンをつける
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                    target: nil,
+                                    action: nil)
+        let done = UIBarButtonItem(title: "閉じる",
+                                   style: .done,
+                                   target: self,
+                                   action: #selector(tapCloseKeyboardButton))
+        toolbar.items = [space, done]
+        repositorySearchBar.inputAccessoryView = toolbar
     }
 
     func inject(_ presenter: RootInputCollection) {
         self.presenter = presenter
+    }
+
+    // 初期画面に戻る
+    @objc func tapResetBarButton(_ sender: UIBarButtonItem) {
+        totalCountLabel.text = ""
+        repositorySearchBar.text = ""
+        noResultView.isHidden = false
+        presenter.reset()
+    }
+
+    // キーボード閉じる
+    @objc func tapCloseKeyboardButton(_ sender: UIBarButtonItem) {
+        repositorySearchBar.resignFirstResponder()
     }
 }
 
@@ -64,14 +99,12 @@ extension RootViewController: UITableViewDataSource {
 
     // セル設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? RepositoryTableViewCell
         let repository = presenter.repositories[indexPath.row]
 
-        cell.textLabel?.text = repository.fullName
-//        cell.detailTextLabel?.text = repository.language
-        cell.tag = indexPath.row
+        cell?.setup(title: repository.fullName, language: repository.language, avatarURL: repository.owner.avatarURL)
 
-        return cell
+        return cell!
     }
 }
 
@@ -124,6 +157,8 @@ extension RootViewController: RootOutputCollection {
         loadingView.isHidden = true
         view.isUserInteractionEnabled = true
         navigationController?.navigationBar.isUserInteractionEnabled = true
+
+        showNoResultView()
     }
     /// 該当件数をセットする
     func setTotalCountLabel(with totalCount: String) {
@@ -139,5 +174,10 @@ extension RootViewController: RootOutputCollection {
             self.presenter.reload()
         }))
         present(alert, animated: true)
+    }
+
+    /// 検索結果が0件のときはnoResultViewを表示する
+    private func showNoResultView() {
+        noResultView.isHidden = (presenter.repositories.isEmpty == false)
     }
 }

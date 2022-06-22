@@ -27,7 +27,7 @@ class GitHubAPIClient: GitHubAPIClientCollection {
 
         guard let encodedSearchWord = searchWord.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let searchRepositoryURL = URL(string:
-                  "https://api.github.com/search/repositories?q=\(encodedSearchWord)&page=\(page)")
+                  "https://api.github.com/search/repositories?q=\(encodedSearchWord)&page=\(page)&per_page=50")
         else {
             let apiError = APIError.invalidSearchWord
             failureHandler(apiError)

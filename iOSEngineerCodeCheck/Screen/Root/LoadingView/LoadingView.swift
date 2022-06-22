@@ -36,7 +36,7 @@ class LodingView: UIView {
     }
 
     private func setup() {
-        self.backgroundColor = .gray.withAlphaComponent(0.2)
+        self.backgroundColor = .gray.withAlphaComponent(0.5)
         loadingFrameView.layer.cornerRadius = 18
     }
 
