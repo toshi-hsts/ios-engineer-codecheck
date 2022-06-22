@@ -107,8 +107,8 @@
                                     <constraint firstItem="lv8-Uo-ibP" firstAttribute="top" secondItem="mHZ-DT-8CL" secondAttribute="top" id="yhM-iJ-vpx"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="ZCS-Rn-THh">
-                                <rect key="frame" x="20" y="599" width="374" height="94"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZCS-Rn-THh">
+                                <rect key="frame" x="20" y="599" width="374" height="88"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="言語" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKb-sd-BYw">
                                         <rect key="frame" x="169.5" y="0.0" width="35" height="20.5"/>
@@ -116,14 +116,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="例：これはSwiftの学習リポジトリです。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTm-Q7-ge8">
-                                        <rect key="frame" x="29" y="31.5" width="316" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="例：これはSwiftの学習リポジトリです。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTm-Q7-ge8">
+                                        <rect key="frame" x="29" y="28.5" width="316" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ou-Nv-mvK">
-                                        <rect key="frame" x="72" y="63" width="230.5" height="31"/>
+                                        <rect key="frame" x="72" y="57" width="230.5" height="31"/>
                                         <accessibility key="accessibilityConfiguration" identifier="showMoreButton"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title=" GitHubページで詳しく見てみる"/>
