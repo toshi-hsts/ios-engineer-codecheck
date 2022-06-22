@@ -29,10 +29,10 @@ class DetailViewController: UIViewController {
         navigationItem.title = repository.fullName
 
         languageLabel.text = "written in \(repository.language)"
-        starsLabel.text = String(repository.stargazersCount)
-        watchersLabel.text = String(repository.watchersCount)
-        forksLabel.text = String(repository.forksCount)
-        issuesLabel.text = String(repository.openIssuesCount)
+        starsLabel.text = String(repository.stargazersCount.addComma())
+        watchersLabel.text = String(repository.watchersCount.addComma())
+        forksLabel.text = String(repository.forksCount.addComma())
+        issuesLabel.text = String(repository.openIssuesCount.addComma())
         descriptionLabel.text = repository.description
 
         setOwnerAvatarImage()
