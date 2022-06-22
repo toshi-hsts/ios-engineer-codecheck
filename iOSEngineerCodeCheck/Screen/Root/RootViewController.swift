@@ -33,12 +33,25 @@ class RootViewController: UIViewController {
         totalCountLabel.text = ""
         navigationItem.backButtonTitle = "戻る"
 
+        // ナビゲーションにリセットボタンをつける
         let resetBarButtonItem = UIBarButtonItem(title: "リセット",
                                                  style: .done,
                                                  target: self,
                                                  action: #selector(tapResetBarButton(_:)))
-
         navigationItem.rightBarButtonItem = resetBarButtonItem
+
+        // キーボードに閉じるボタンをつける
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                    target: nil,
+                                    action: nil)
+        let done = UIBarButtonItem(title: "閉じる",
+                                   style: .done,
+                                   target: self,
+                                   action: #selector(tapCloseKeyboardButton))
+        toolbar.items = [space, done]
+        repositorySearchBar.inputAccessoryView = toolbar
     }
 
     func inject(_ presenter: RootInputCollection) {
@@ -51,6 +64,11 @@ class RootViewController: UIViewController {
         repositorySearchBar.text = ""
         noResultView.isHidden = false
         presenter.reset()
+    }
+
+    // キーボード閉じる
+    @objc func tapCloseKeyboardButton(_ sender: UIBarButtonItem) {
+        repositorySearchBar.resignFirstResponder()
     }
 }
 
