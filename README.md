@@ -5,7 +5,7 @@
 <img src="https://user-images.githubusercontent.com/80573353/175236531-d8f69de9-bde7-454c-8f3e-96e23221300d.gif" width=200>
 
 ## 開発環境
-Xcode 13.4.1.  
+Xcode 13.4.1<br>
 開発ターゲット　iOS 15.0
 
 ## 実行方法
@@ -24,6 +24,12 @@ cd/to/path
 open ios-engineer-codecheck.xcodeproj
 ```
 2. シミュレータor実機を起動　
+
+## 利用外部ライブラリ
+Alamofire<br>
+SDWebImage
+
+（Swift Package Managerを利用して管理）
 
 ## 仕様
 - 任意のキーワードでリポジトリ検索できる
