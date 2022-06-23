@@ -1,45 +1,48 @@
-# 株式会社ゆめみ iOS エンジニアコードチェック課題
+# GitHubリポジトリ検索くん
+本アプリはGitHubのリポジトリを検索するシンプルなAppです。  
+（株式会社ゆめみの技術課題です。cf. https://github.com/yumemi-inc/ios-engineer-codecheck　
 
-## 概要
+<img src="https://user-images.githubusercontent.com/80573353/175236531-d8f69de9-bde7-454c-8f3e-96e23221300d.gif" width=200>
 
-本プロジェクトは株式会社ゆめみ（以下弊社）が、弊社に iOS エンジニアを希望する方に出す課題のベースプロジェクトです。本課題が与えられた方は、下記の概要を詳しく読んだ上で課題を取り組んでください。
+## 開発環境
+Xcode 13.4.1.  
+開発ターゲット　iOS 15.0
 
-## アプリ仕様
+## 実行方法
+### 必要ソフトとデバイス
+- mac
+- Xcode(13以上)
+- iPhone simulater or iPhone実機（iOS15.0以上が導入されていること）
 
-本アプリは GitHub のリポジトリーを検索するアプリです。
+### 実行手順
+1. プロジェクトを立ち上げる
+```zsh
+git clone git@github.com:toshi-hsts/ios-engineer-codecheck.git
 
-![動作イメージ](README_Images/app.gif)
+cd/to/path
 
-### 環境
+open ios-engineer-codecheck.xcodeproj
+```
+2. シミュレータor実機を起動　
 
-- IDE：基本最新の安定版（本概要更新時点では Xcode 13.0）
-- Swift：基本最新の安定版（本概要更新時点では Swift 5.5）
-- 開発ターゲット：基本最新の安定版（本概要更新時点では iOS 15.0）
-- サードパーティーライブラリーの利用：オープンソースのものに限り制限しない
+## 仕様
+- 任意のキーワードでリポジトリ検索できる
+- 検索キーワードは日本語でも検索可能とする
+- 検索後リセット（初期画面に戻る）を可能とする
+- 検索後ローディング画面を表示する
+- 検索後の画面でヒット件数を表示する
+- リポジトリ取得においてエラー捕捉時はアラートを表示する
+- スクロールすると自動読み込みする（無限スクロール）
+- セルタップで詳細画面に遷移する
+- 詳細画面からリポジトリページに遷移も可能する
+- 画像取得時にローディングを表示する
+- 画像取得失敗時は代替画像を表示する
+- ダークモード対応
 
-### 動作
+<p>
+<img src="https://user-images.githubusercontent.com/80573353/175245167-d82721ee-2954-41bd-8e0e-789f370f9ae3.png" width=200>
+  
+<img src="https://user-images.githubusercontent.com/80573353/175244488-a9ae4a6c-0c35-4bc5-834d-e6ba0fdc5e73.png" width=200>
 
-1. 何かしらのキーワードを入力
-2. GitHub API（`search/repositories`）でリポジトリーを検索し、結果一覧を概要（リポジトリ名）で表示
-3. 特定の結果を選択したら、該当リポジトリの詳細（リポジトリ名、オーナーアイコン、プロジェクト言語、Star 数、Watcher 数、Fork 数、Issue 数）を表示
-
-## 課題取り組み方法
-
-Issues を確認した上、本プロジェクトを [**Duplicate** してください](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository)（Fork しないようにしてください。必要ならプライベートリポジトリーにしても大丈夫です）。今後のコミットは全てご自身のリポジトリーで行ってください。
-
-コードチェックの課題 Issue は全て [`課題`](https://github.com/yumemi/ios-engineer-codecheck/milestone/1) Milestone がついており、難易度に応じて Label が [`初級`](https://github.com/yumemi/ios-engineer-codecheck/issues?q=is%3Aopen+is%3Aissue+label%3A初級+milestone%3A課題)、[`中級`](https://github.com/yumemi/ios-engineer-codecheck/issues?q=is%3Aopen+is%3Aissue+label%3A中級+milestone%3A課題+) と [`ボーナス`](https://github.com/yumemi/ios-engineer-codecheck/issues?q=is%3Aopen+is%3Aissue+label%3Aボーナス+milestone%3A課題+) に分けられています。課題の必須／選択は下記の表とします：
-
-|   | 初級 | 中級 | ボーナス
-|--:|:--:|:--:|:--:|
-| 新卒／未経験者 | 必須 | 選択 | 選択 |
-| 中途／経験者 | 必須 | 必須 | 選択 |
-
-
-課題 Issueをご自身のリポジトリーにコピーするGitHub Actionsをご用意しております。  
-[こちらのWorkflow](./.github/workflows/copy-issues.yml)を[手動でトリガーする](https://docs.github.com/ja/actions/managing-workflow-runs/manually-running-a-workflow)ことでコピーできますのでご活用下さい。
-
-課題が完成したら、リポジトリーのアドレスを教えてください。
-
-## 参考記事
-
-提出された課題の評価ポイントに関しては、[こちらの記事](https://qiita.com/lovee/items/d76c68341ec3e7beb611)に詳しく書かれてありますので、ぜひご覧ください。
+<img src="https://user-images.githubusercontent.com/80573353/175244723-468d55ec-a01e-4e40-8112-bf1224559b0c.png" width=200>
+</p>
