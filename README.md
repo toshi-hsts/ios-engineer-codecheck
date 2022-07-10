@@ -1,5 +1,5 @@
 # GitHubリポジトリ検索くん
-本アプリはGitHubのリポジトリを検索するシンプルなAppです。  
+本アプリはGitHubのリポジトリを検索するシンプルなAppです。 (as of 2022/06)
 （株式会社ゆめみの技術課題です。cf. https://github.com/yumemi-inc/ios-engineer-codecheck　
 
 <img src="https://user-images.githubusercontent.com/80573353/175236531-d8f69de9-bde7-454c-8f3e-96e23221300d.gif" width=200>
